@@ -65,6 +65,56 @@
   --bs-body-bg: #fff;
 }
 
+/* Image */
+.react {
+  background-image: url(../assets/img/react.svg);
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+}
+
+.github {
+  background-image: url(../assets/img/github.svg);
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+}
+
+.typescript {
+  background-image: url(../assets/img/typescript.svg);
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+}
+
+.tailwindcss {
+  background-image: url(../assets/img/tailwindcss.svg);
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+}
+
+.javascript {
+  background-image: url(../assets/img/javascript.svg);
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+}
+
+.css {
+  background-image: url(../assets/img/css.svg);
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+}
+
+.html {
+  background-image: url(../assets/img/html.svg);
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+}
+
 *,
 *::before,
 *::after {
