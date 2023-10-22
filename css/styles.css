@@ -729,6 +729,10 @@ progress {
   color: #6c757d;
 }
 
+.skills, .diaz, .jobs {
+  min-height: 100vh;
+}
+
 .container,
 .container-fluid,
 .container-xxl,
