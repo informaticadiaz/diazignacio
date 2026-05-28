@@ -1,0 +1,8 @@
+DEPLOY.md
+README.md
+*.log
+.git
+.gitignore
+.DS_Store
+Thumbs.db
+node_modules

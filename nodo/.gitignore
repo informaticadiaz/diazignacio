@@ -1,0 +1,14 @@
+# Bundle original de Claude Design (no se deploya)
+project/
+
+# Archivos sin clasificar
+file.enc
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs
+*.log
