@@ -1,728 +1,916 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Diseño web - Diaz Ignacio</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
-            type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ignacio Diaz — Full-stack Developer</title>
+<meta name="description" content="Portfolio de Ignacio Diaz, desarrollador full-stack autodidacta en Buenos Aires. React, TypeScript, Supabase, Docker y plataformas SaaS multi-tenant." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy-950: #07101F;
+    --navy-900: #0F172A;
+    --navy-800: #131C30;
+    --navy-700: #1B2540;
+    --navy-600: #243153;
+    --line: rgba(148, 163, 184, 0.14);
+    --line-strong: rgba(148, 163, 184, 0.28);
+    --text: #E6EDF7;
+    --text-muted: #94A3B8;
+    --text-dim: #64748B;
+    --blue: #3B82F6;
+    --blue-bright: #60A5FA;
+    --blue-glow: rgba(59, 130, 246, 0.35);
+    --radius-sm: 6px;
+    --radius: 10px;
+    --radius-lg: 16px;
+    --max: 1200px;
+    --pad: clamp(20px, 4vw, 40px);
+    --font: 'Inter', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
 
-    <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-            <div class="container">
-                <a class="navbar-brand" href="#page-top">Diseño Web</a>
-                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
-                    type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"> Menu <i
-                        class="fas fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                                href="#habilidades">Habilidades</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                                href="#trabajos">Trabajos</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                                href="#contact">Contacto</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Masthead-->
-        <header class="masthead bg-primary text-white text-center">
-            <div class="container d-flex align-items-center flex-column">
-                <!-- Masthead Avatar Image-->
-                <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="..." />
-                <!-- Masthead Heading-->
-                <h1 class="masthead-heading text-uppercase mb-0">Diaz Ignacio</h1>
-                <!-- Icon Divider-->
-                <div class="divider-custom divider-light">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-            </div>
-        </header>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--navy-900);
+    color: var(--text);
+    font-family: var(--font);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.55;
+    letter-spacing: -0.005em;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--blue); color: white; }
 
-        <!-- Habilidades Section-->
-        <section class="page-section portfolio" id="habilidades">
-            <div class="container">
-                <!-- Portfolio Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Habilidades</h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                <!-- Habilidades Grid Items-->
-                <div class="row justify-content-center">
-                    <!-- Habilidades Item 1-->
-                    <div class="col-md-6 col-lg-3 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
-                            <div
-                                class="portfolio-item-caption-h d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i
-                                        class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <center class="html"></center>
-                        </div>
-                        <h3 align="center">HTML</h3>
-                    </div>
-                    <!-- Habilidades Item 2-->
-                    <div class="col-md-6 col-lg-3 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
-                            <div
-                                class="portfolio-item-caption-h d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i
-                                        class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <center class="css"></center>
-                        </div>
-                        <h3 align="center">CSS</h3>
-                    </div>
-                    <!-- Habilidades Item 3-->
-                    <div class="col-md-6 col-lg-3 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
-                            <div
-                                class="portfolio-item-caption-h d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i
-                                        class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <center class="javascript"></center>
-                        </div>
-                        <h3 align="center">JAVASCRIPT</h3>
-                    </div>
-                    <!-- Habilidades Item 4-->
-                    <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
-                            <div
-                                class="portfolio-item-caption-h d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i
-                                        class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <center class="tailwindcss"></center>
-                        </div>
-                        <h3 align="center">TAILWINSCSS</h3>
-                    </div>
-                    <!-- Habilidades Item 5-->
-                    <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
-                            <div
-                                class="portfolio-item-caption-h d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i
-                                        class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <center class="typescript"></center>
-                        </div>
-                        <h3 align="center">TYPESCRIPT</h3>
-                    </div>
-                    <!-- Habilidades Item 6-->
-                    <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
-                            <div
-                                class="portfolio-item-caption-h d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i
-                                        class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <center class="react"></center>
-                        </div>
-                        <h3 align="center">REACT</h3>
-                    </div>
-                    <!-- Habilidades Item 7-->
-                    <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal6">
-                            <div
-                                class="portfolio-item-caption-h d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i
-                                        class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <center class="github"></center>
-                        </div>
-                        <h3 align="center">GITHUB</h3>
-                    </div>
-                </div>
-            </div>
-        </section>
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; }
+  img, svg { display: block; max-width: 100%; }
 
-        <!-- ModalsHabilidades -->
-        <section id="modals-habilidades">
-        <!-- Habilidades Modal 1-->
-        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1"
-            aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
-                            aria-label="Close"></button></div>
-                    <div class="modal-body text-center pb-5">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <!-- Habilidades Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">HTML</h2>
-                                    <!-- Icon Divider-->
-                                    <div class="divider-custom">
-                                        <div class="divider-custom-line"></div>
-                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                        <div class="divider-custom-line"></div>
-                                    </div>
-                                    <!-- Habilidades Modal - Image-->
-                                    <center><i class="fa-brands fa-html5 fa-10x"></i></center>
-                                    <!-- Habilidades Modal - Text-->
-                                    <p class="mb-4">Trabajo con HTML para crear sitios extraordinarios!</p>
-                                    <button class="btn btn-primary" data-bs-dismiss="modal">
-                                        <a class="btn btn-primary" href="#contact">Contacto</a></li>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Habilidades Modal 2-->
-        <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" aria-labelledby="portfolioModal2"
-            aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
-                            aria-label="Close"></button></div>
-                    <div class="modal-body text-center pb-5">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <!-- Habilidades Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">CSS</h2>
-                                    <!-- Icon Divider-->
-                                    <div class="divider-custom">
-                                        <div class="divider-custom-line"></div>
-                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                        <div class="divider-custom-line"></div>
-                                    </div>
-                                    <!-- Habilidades Modal - Image-->
-                                    <center><i class="fa-brands fa-css3 fa-10x"></i></center>
-                                    <!-- Habilidades Modal - Text-->
-                                    <p class="mb-4">Trabajo con CSS para crear sitios increibles!</p>
-                                    <button class="btn btn-primary" data-bs-dismiss="modal">
-                                        <a class="btn btn-primary" href="#contact">Contacto</a></li>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Habilidades Modal 3-->
-        <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" aria-labelledby="portfolioModal3"
-            aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
-                            aria-label="Close"></button></div>
-                    <div class="modal-body text-center pb-5">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <!-- Habilidades Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">JAVASCRIPT</h2>
-                                    <!-- Icon Divider-->
-                                    <div class="divider-custom">
-                                        <div class="divider-custom-line"></div>
-                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                        <div class="divider-custom-line"></div>
-                                    </div>
-                                    <!-- Habilidades Modal - Image-->
-                                    <center><i class="fa-brands fa-js fa-10x"></i></center>
-                                    <!-- Habilidades Modal - Text-->
-                                    <p class="mb-4">Trabajo con JAVASCRIPT para crear sitios increibles!</p>
-                                    <button class="btn btn-primary" data-bs-dismiss="modal">
-                                        <a class="btn btn-primary" href="#contact">Contacto</a></li>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Habilidades Modal 4-->
-        <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" aria-labelledby="portfolioModal4"
-            aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
-                            aria-label="Close"></button></div>
-                    <div class="modal-body text-center pb-5">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <!-- Habilidades Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Boostrap</h2>
-                                    <!-- Icon Divider-->
-                                    <div class="divider-custom">
-                                        <div class="divider-custom-line"></div>
-                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                        <div class="divider-custom-line"></div>
-                                    </div>
-                                    <!-- Habilidades Modal - Image-->
-                                    <center><i class="fa-brands fa-bootstrap fa-10x"></i></center>
-                                    <!-- Habilidades Modal - Text-->
-                                    <p class="mb-4">Trabajo con Boostrap para crear sitios increibles!</p>
-                                    <button class="btn btn-primary" data-bs-dismiss="modal">
-                                        <a class="btn btn-primary" href="#contact">Contacto</a></li>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Habilidades Modal 5-->
-        <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" aria-labelledby="portfolioModal5"
-            aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
-                            aria-label="Close"></button></div>
-                    <div class="modal-body text-center pb-5">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <!-- Habilidades Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">PHP</h2>
-                                    <!-- Icon Divider-->
-                                    <div class="divider-custom">
-                                        <div class="divider-custom-line"></div>
-                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                        <div class="divider-custom-line"></div>
-                                    </div>
-                                    <!-- Habilidades Modal - Image-->
-                                    <center><i class="fa-brands fa-php fa-10x"></i></center>
-                                    <!-- Habilidades Modal - Text-->
-                                    <p class="mb-4">Trabajo con PHP para crear sitios increibles!</p>
-                                    <button class="btn btn-primary" data-bs-dismiss="modal">
-                                        <a class="btn btn-primary" href="#contact">Contacto</a></li>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Habilidades Modal 6-->
-        <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" aria-labelledby="portfolioModal6"
-            aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
-                            aria-label="Close"></button></div>
-                    <div class="modal-body text-center pb-5">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <!-- Habilidades Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">SQL</h2>
-                                    <!-- Icon Divider-->
-                                    <div class="divider-custom">
-                                        <div class="divider-custom-line"></div>
-                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                        <div class="divider-custom-line"></div>
-                                    </div>
-                                    <!-- Habilidades Modal - Image-->
-                                    <center><i class="fa-solid fa-database fa-10x"></i></center>
-                                    <!-- Habilidades Modal - Text-->
-                                    <p class="mb-4">Trabajo con bases de datos para crear sitios increibles!</p>
-                                    <button class="btn btn-primary" data-bs-dismiss="modal">
-                                        <a class="btn btn-primary" href="#contact">Contacto</a></li>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </section>
+  .wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding-left: var(--pad);
+    padding-right: var(--pad);
+  }
 
-        <!-- Trabajos Section-->
-        <section class="page-section bg-primary text-white portfolio" id="trabajos">
-                <!-- About Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-white">Trabajos</h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom divider-light">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                <!-- Portfolio Grid Items-->
-                <div class="row justify-content-center">
-                    <!-- Portfolio Item 1-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#trabajosModal1">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x text-primary"></i></div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio/tizzano.webp" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 2-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#trabajosModal2">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x text-primary"></i></div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio/messi.webp" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 3-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#trabajosModal3">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x text-primary"></i></div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio/blog.webp" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 4-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#trabajosModal4">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x text-primary"></i></div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio/blogastro.webp" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 5-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#trabajosModal5">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x text-primary"></i></div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio/prensa.webp" alt="..." />
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </section>
+  /* ───────── Navbar ───────── */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    transition: background .25s ease, border-color .25s ease, backdrop-filter .25s ease;
+    border-bottom: 1px solid transparent;
+  }
+  .nav.scrolled {
+    background: rgba(7, 16, 31, 0.72);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom-color: var(--line);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: -0.01em;
+  }
+  .brand-mark {
+    width: 26px; height: 26px;
+    display: grid; place-items: center;
+    border-radius: 7px;
+    background: linear-gradient(135deg, #3B82F6, #1D4ED8);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.06) inset, 0 6px 20px -6px var(--blue-glow);
+  }
+  .brand-mark svg { width: 14px; height: 14px; }
+  .nav-links {
+    display: flex; align-items: center; gap: 28px;
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 14px;
+    font-size: 13.5px;
+    font-weight: 600;
+    border-radius: 8px;
+    background: white;
+    color: var(--navy-900);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 8px 22px -8px rgba(255,255,255,0.25); }
+  .nav-mobile-toggle { display: none; }
+  @media (max-width: 820px) {
+    .nav-links { display: none; }
+    .nav-mobile-toggle {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 38px; height: 38px;
+      border: 1px solid var(--line-strong);
+      background: transparent; color: var(--text);
+      border-radius: 8px; cursor: pointer;
+    }
+  }
 
-        <!-- Modals Trabajos -->
-        <section id="modals-trabajos">
-        <!-- Trabajos Modal Baires-->
-        <div class="portfolio-modal modal fade" id="trabajosModal1" tabindex="-1" aria-labelledby="portfolioModal1"
-            aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
-                            aria-label="Close"></button></div>
-                    <div class="modal-body text-center pb-5">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <!-- Trabajos Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Baires Real Estate</h2>
-                                    <!-- Icon Divider-->
-                                    <div class="divider-custom">
-                                        <div class="divider-custom-line"></div>
-                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                        <div class="divider-custom-line"></div>
-                                    </div>
-                                    <!-- Trabajos Modal - Image-->
-                                    <div><img class="img-fluid" src="/assets/img/portfolio/tizzano.webp" alt=""></div>
-                                    <!-- Trabajos Modal - Text-->
-                                    
-                                    <button class="btn btn-primary mt-3" data-bs-dismiss="modal">
-                                        <a class="btn btn-primary" href="https://bairesrealestate.com.ar/" target="_blank">visitar</a></li>
-                                    </button>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Trabajos Modal Messi-->
-        <div class="portfolio-modal modal fade" id="trabajosModal2" tabindex="-1" aria-labelledby="portfolioModal2"
-            aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
-                            aria-label="Close"></button></div>
-                    <div class="modal-body text-center pb-5">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <!-- Trabajos Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Messi Nuestro</h2>
-                                    <!-- Icon Divider-->
-                                    <div class="divider-custom">
-                                        <div class="divider-custom-line"></div>
-                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                        <div class="divider-custom-line"></div>
-                                    </div>
-                                    <!-- Trabajos Modal - Image-->
-                                    <div><img class="img-fluid" src="/assets/img/portfolio/messi.webp" alt=""></div>
-                                    <!-- Trabajos Modal - Text-->
-                                    <button class="btn btn-primary mt-3" data-bs-dismiss="modal">
-                                        <a class="btn btn-primary" href="https://informaticadiaz.github.io/messinuestro/" target="_blank">Visitar</a></li>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Trabajos Modal 3-->
-        <div class="portfolio-modal modal fade" id="trabajosModal3" tabindex="-1" aria-labelledby="portfolioModal3"
-            aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
-                            aria-label="Close"></button></div>
-                    <div class="modal-body text-center pb-5">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <!-- Trabajos Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Muy Pronto</h2>
-                                    <!-- Icon Divider-->
-                                    <div class="divider-custom">
-                                        <div class="divider-custom-line"></div>
-                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                        <div class="divider-custom-line"></div>
-                                    </div>
-                                    <!-- Trabajos Modal - Image-->
-                                    <center><i class="fa-brands fa-js fa-10x"></i></center>
-                                    <!-- Trabajos Modal - Text-->
-                                    <p class="mb-4"></p>
-                                    <button class="btn btn-primary" data-bs-dismiss="modal">
-                                        <a class="btn btn-primary" href="#contact">Contacto</a></li>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Trabajos Modal 4-->
-        <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" aria-labelledby="portfolioModal4"
-            aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
-                            aria-label="Close"></button></div>
-                    <div class="modal-body text-center pb-5">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <!-- Trabajos Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Boostrap</h2>
-                                    <!-- Icon Divider-->
-                                    <div class="divider-custom">
-                                        <div class="divider-custom-line"></div>
-                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                        <div class="divider-custom-line"></div>
-                                    </div>
-                                    <!-- Trabajos Modal - Image-->
-                                    <center><i class="fa-brands fa-bootstrap fa-10x"></i></center>
-                                    <!-- Trabajos Modal - Text-->
-                                    <p class="mb-4">Trabajo con Boostrap para crear sitios increibles!</p>
-                                    <button class="btn btn-primary" data-bs-dismiss="modal">
-                                        <a class="btn btn-primary" href="#contact">Contacto</a></li>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Trabajos Modal 5-->
-        <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" aria-labelledby="portfolioModal5"
-            aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
-                            aria-label="Close"></button></div>
-                    <div class="modal-body text-center pb-5">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <!-- Trabajos Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">PHP</h2>
-                                    <!-- Icon Divider-->
-                                    <div class="divider-custom">
-                                        <div class="divider-custom-line"></div>
-                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                        <div class="divider-custom-line"></div>
-                                    </div>
-                                    <!-- Trabajos Modal - Image-->
-                                    <center><i class="fa-brands fa-php fa-10x"></i></center>
-                                    <!-- Trabajos Modal - Text-->
-                                    <p class="mb-4">Trabajo con PHP para crear sitios increibles!</p>
-                                    <button class="btn btn-primary" data-bs-dismiss="modal">
-                                        <a class="btn btn-primary" href="#contact">Contacto</a></li>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Trabajos Modal 6-->
-        <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" aria-labelledby="portfolioModal6"
-            aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
-                            aria-label="Close"></button></div>
-                    <div class="modal-body text-center pb-5">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <!-- Trabajos Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">SQL</h2>
-                                    <!-- Icon Divider-->
-                                    <div class="divider-custom">
-                                        <div class="divider-custom-line"></div>
-                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                        <div class="divider-custom-line"></div>
-                                    </div>
-                                    <!-- Trabajos Modal - Image-->
-                                    <center><i class="fa-solid fa-database fa-10x"></i></center>
-                                    <!-- Trabajos Modal - Text-->
-                                    <p class="mb-4">Trabajo con bases de datos para crear sitios increibles!</p>
-                                    <button class="btn btn-primary" data-bs-dismiss="modal">
-                                        <a class="btn btn-primary" href="#contact">Contacto</a></li>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </section>
+  /* ───────── Buttons ───────── */
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 20px;
+    font-weight: 600; font-size: 14.5px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform .15s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: var(--blue);
+    color: white;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.08) inset, 0 12px 40px -12px var(--blue-glow);
+  }
+  .btn-primary:hover { background: #2563EB; transform: translateY(-1px); box-shadow: 0 18px 50px -12px var(--blue-glow); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border-color: var(--line-strong);
+  }
+  .btn-ghost:hover { border-color: rgba(148,163,184,0.45); background: rgba(148,163,184,0.05); }
+  .btn .arrow { transition: transform .2s ease; }
+  .btn:hover .arrow { transform: translateX(3px); }
 
-        <!-- Footer-->
-        <footer class="footer text-center" id="contact">
-            <div class="container">
-                <div class="row">
-                    <!-- Footer Location-->
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <h4 class="text-uppercase mb-4">UBICACION</h4>
-                        <p class="lead mb-0"> Buenos Aires <br /> Argentina </p>
-                    </div>
-                    <!-- Footer Social Icons-->
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <h4 class="text-uppercase mb-4">REDES</h4>
-                        <a class="btn btn-outline-light btn-social mx-1" href="https://github.com/informaticadiaz"><i
-                                class="fab fa-fw  fa-github"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="https://twitter.com/DiazIgnacioDev"><i
-                                class="fab fa-fw fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="https://www.linkedin.com/in/diazignacio/"><i
-                                class="fab fa-fw fa-linkedin-in"></i></a>
-                    </div>
-                    <!-- Footer About Text-->
-                    <div class="col-lg-4">
-                        <a href="https://wa.me/+541136373618"><i class="fa-brands fa-whatsapp-square fa-6x"></i></a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-       <!-- Contact Section-->
-        <section class="page-section">
-            <div class="container">
-                <!-- Contact Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contacto</h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                <!-- Contact Section Form-->
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 col-xl-7">
-                        <!-- to get an API token!-->
-                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                            <!-- Nombre input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" type="text" name="nombre" id="nombre"
-                                    placeholder="Enter your name..." data-sb-validations="required" required/>
-                                <label for="nombre">Nombre</label>
-                                <div class="invalid-feedback" data-sb-feedback="name:required">Nombre requerido</div>
-                            </div>
-                            <!-- Telefono_Email input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" type="text" name="telefono_email" id="telefono_email"
-                                    placeholder="name@example.com" required/>
-                                <label for="telefono_email">Email o Celular</label>
-                                <div class="invalid-feedback" data-sb-feedback="telefono_email:required">Celular o Email
-                                    requerido</div>
-                            </div>
-                            <!-- titulo input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" type="text" name="titulo" id="titulo"
-                                    placeholder="Enter your name..." data-sb-validations="required" required/>
-                                <label for="titulo">Titulo</label>
-                                <div class="invalid-feedback" data-sb-feedback="titulo:required">Titulo requerido</div>
-                            </div>
-                            <!-- mensaje input-->
-                            <div class="form-floating mb-3">
-                                <textarea class="form-control" type="text" name="mensaje" id="mensaje"
-                                    placeholder="Enter your name..." data-sb-validations="required" required></textarea>
-                                <label for="mensaje">Mensaje</label>
-                                <div class="invalid-feedback" data-sb-feedback="mensaje:required">Mensaje requerido.
-                                </div>
-                            </div>
+  /* ───────── Hero ───────── */
+  .hero {
+    position: relative;
+    padding: 160px 0 110px;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 0%, rgba(59,130,246,0.25), transparent 70%),
+      radial-gradient(ellipse 40% 30% at 85% 20%, rgba(99,102,241,0.18), transparent 70%),
+      var(--navy-900);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; z-index: -1;
+    background-image:
+      linear-gradient(to right, var(--line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 70% 70% at 50% 30%, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 30%, black 30%, transparent 75%);
+    opacity: 0.55;
+  }
+  .hero-glow {
+    position: absolute; left: 50%; top: 0;
+    transform: translate(-50%, -40%);
+    width: 900px; height: 600px;
+    background: radial-gradient(ellipse, rgba(59,130,246,0.35), transparent 60%);
+    z-index: -1;
+    pointer-events: none;
+    filter: blur(40px);
+  }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 12px 6px 8px;
+    background: rgba(59,130,246,0.08);
+    border: 1px solid rgba(59,130,246,0.25);
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: #BFDBFE;
+    font-family: var(--mono);
+    letter-spacing: 0;
+  }
+  .eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 999px;
+    background: #60A5FA;
+    box-shadow: 0 0 0 3px rgba(96,165,250,0.2);
+  }
+  h1.headline {
+    margin: 22px 0 18px;
+    font-size: clamp(40px, 6.5vw, 72px);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    font-weight: 700;
+    max-width: 18ch;
+  }
+  h1.headline .accent {
+    background: linear-gradient(180deg, #93C5FD 0%, #3B82F6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .sub {
+    max-width: 58ch;
+    color: var(--text-muted);
+    font-size: clamp(16px, 1.6vw, 19px);
+    line-height: 1.6;
+  }
+  .hero-ctas {
+    display: flex; gap: 12px; flex-wrap: wrap;
+    margin-top: 36px;
+  }
+  .hero-meta {
+    display: flex; gap: 24px; flex-wrap: wrap;
+    margin-top: 40px;
+    color: var(--text-dim);
+    font-size: 13px;
+    font-family: var(--mono);
+  }
+  .hero-meta span::before {
+    content: "✓";
+    margin-right: 8px;
+    color: var(--blue-bright);
+  }
 
-                            <!-- Submit Button-->
-                            <input class="btn btn-primary btn-xl" type="submit" id="button" value="Enviar">
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section> 
-        
-        <!-- Copyright Section-->
-        <div class="copyright py-4 text-center text-white">
-            <div class="container"><small>Dev &copy; Diaz Ignacio</small></div>
+  /* ───────── Section primitives ───────── */
+  section.block {
+    padding: 110px 0;
+    position: relative;
+  }
+  .section-head {
+    max-width: 720px;
+    margin-bottom: 56px;
+  }
+  .section-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--blue-bright);
+    margin-bottom: 14px;
+    letter-spacing: 0.04em;
+  }
+  .section-tag::before { content: "// "; opacity: 0.5; }
+  h2.section-title {
+    font-size: clamp(30px, 3.6vw, 44px);
+    line-height: 1.08;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin: 0 0 16px;
+  }
+  .section-sub {
+    color: var(--text-muted);
+    font-size: 17px;
+    max-width: 60ch;
+    margin: 0;
+  }
+
+  /* ───────── Services ───────── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  @media (max-width: 980px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .services-grid { grid-template-columns: 1fr; } }
+  .service {
+    background: var(--navy-900);
+    padding: 32px 28px 36px;
+    transition: background .25s ease;
+    position: relative;
+  }
+  .service:hover { background: var(--navy-800); }
+  .service-icon {
+    width: 42px; height: 42px;
+    border-radius: 10px;
+    display: grid; place-items: center;
+    background: rgba(59,130,246,0.1);
+    border: 1px solid rgba(59,130,246,0.25);
+    color: var(--blue-bright);
+    margin-bottom: 22px;
+  }
+  .service h3 {
+    font-size: 18px;
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+  }
+  .service p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 14.5px;
+    line-height: 1.6;
+  }
+  .service-tags {
+    margin-top: 18px;
+    display: flex; gap: 6px; flex-wrap: wrap;
+  }
+  .service-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dim);
+    padding: 3px 8px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+  }
+
+  /* ───────── Process ───────── */
+  .process {
+    background: var(--navy-950);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    counter-reset: step;
+  }
+  @media (max-width: 820px) { .steps { grid-template-columns: 1fr; } }
+  .step {
+    position: relative;
+    padding: 28px;
+    background: var(--navy-900);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    counter-increment: step;
+  }
+  .step::before {
+    content: "0" counter(step);
+    position: absolute;
+    top: 24px; right: 28px;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .step-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(59,130,246,0.18), rgba(59,130,246,0.05));
+    border: 1px solid rgba(59,130,246,0.25);
+    display: grid; place-items: center;
+    color: var(--blue-bright);
+    margin-bottom: 22px;
+  }
+  .step h3 {
+    margin: 0 0 8px;
+    font-size: 19px;
+    letter-spacing: -0.01em;
+  }
+  .step p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 14.5px;
+    line-height: 1.6;
+  }
+  .step-meta {
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+  .step-meta b { color: var(--text); font-weight: 500; }
+
+  /* ───────── Final CTA ───────── */
+  .final {
+    padding: 90px 0 110px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .final::before {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 80%;
+    background: radial-gradient(ellipse 60% 80% at 50% 90%, rgba(59,130,246,0.25), transparent 70%);
+    z-index: -1;
+  }
+  .final-card {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 64px 40px;
+    background: linear-gradient(180deg, rgba(59,130,246,0.08), transparent), var(--navy-800);
+    border: 1px solid var(--line-strong);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .final-card::after {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, var(--line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black, transparent 70%);
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  .final h2 {
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin: 0 0 16px;
+    position: relative;
+  }
+  .final p {
+    color: var(--text-muted);
+    font-size: 17px;
+    margin: 0 auto 32px;
+    max-width: 56ch;
+    position: relative;
+  }
+  .final-ctas {
+    display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center;
+    position: relative;
+  }
+
+  /* ───────── Footer ───────── */
+  footer {
+    border-top: 1px solid var(--line);
+    background: var(--navy-950);
+    padding: 64px 0 40px;
+  }
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+  }
+  @media (max-width: 820px) { .foot-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .foot-grid { grid-template-columns: 1fr; } }
+  .foot-brand p {
+    color: var(--text-muted);
+    font-size: 14px;
+    max-width: 38ch;
+    margin: 14px 0 20px;
+  }
+  .foot-col h4 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-dim);
+    margin: 0 0 14px;
+    font-weight: 600;
+    font-family: var(--mono);
+  }
+  .foot-col ul {
+    list-style: none;
+    padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .foot-col a {
+    color: var(--text-muted);
+    font-size: 14px;
+    transition: color .15s;
+  }
+  .foot-col a:hover { color: var(--text); }
+  .foot-bottom {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    color: var(--text-dim);
+    font-size: 13px;
+  }
+  .socials { display: flex; gap: 10px; }
+  .social {
+    width: 34px; height: 34px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    display: grid; place-items: center;
+    color: var(--text-muted);
+    transition: color .15s, border-color .15s, background .15s;
+  }
+  .social:hover { color: var(--text); border-color: var(--line-strong); background: rgba(255,255,255,0.02); }
+
+  /* ───────── Reveal ───────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* Subtle floating glow on hero — pure CSS */
+  @keyframes drift {
+    0%, 100% { transform: translate(-50%, -40%) scale(1); }
+    50% { transform: translate(-50%, -38%) scale(1.05); }
+  }
+  .hero-glow { animation: drift 9s ease-in-out infinite; }
+
+  /* ───────── Brand initials ───────── */
+  .brand-mark {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0;
+    color: white;
+  }
+
+  /* ───────── Mobile nav ───────── */
+  @media (max-width: 820px) {
+    .nav.open {
+      background: rgba(7, 16, 31, 0.96);
+      border-bottom-color: var(--line);
+    }
+    .nav.open .nav-links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 18px;
+      position: absolute;
+      top: 68px; left: 0; right: 0;
+      padding: 20px var(--pad) 28px;
+      background: rgba(7, 16, 31, 0.96);
+      border-bottom: 1px solid var(--line);
+    }
+  }
+
+  /* ───────── Stack ───────── */
+  .service-icon img { width: 22px; height: 22px; }
+
+  /* ───────── Projects ───────── */
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 980px) { .projects { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .projects { grid-template-columns: 1fr; } }
+  .project {
+    display: flex; flex-direction: column;
+    background: var(--navy-800);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: transform .2s ease, border-color .2s ease;
+  }
+  .project:hover { transform: translateY(-2px); border-color: var(--line-strong); }
+  .project-thumb {
+    aspect-ratio: 16 / 9;
+    display: flex; flex-direction: column;
+    background:
+      radial-gradient(ellipse 70% 80% at 50% 100%, rgba(59,130,246,0.22), transparent 70%),
+      var(--navy-700);
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .browser-bar {
+    display: flex; align-items: center; gap: 6px;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--line);
+    background: rgba(7, 16, 31, 0.5);
+  }
+  .browser-bar i {
+    width: 8px; height: 8px; border-radius: 999px;
+    background: var(--line-strong);
+  }
+  .browser-url {
+    margin-left: 8px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: rgba(148,163,184,0.08);
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dim);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .browser-view {
+    flex: 1;
+    display: grid; place-items: center;
+    font-size: clamp(20px, 2.2vw, 26px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    transition: transform .4s ease;
+  }
+  .project:hover .browser-view { transform: scale(1.04); }
+  .project-body { padding: 26px 28px 30px; display: flex; flex-direction: column; flex: 1; }
+  .project h3 { margin: 0 0 8px; font-size: 19px; letter-spacing: -0.01em; }
+  .project p { margin: 0 0 20px; color: var(--text-muted); font-size: 14.5px; line-height: 1.6; flex: 1; }
+  .project-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 14px; font-weight: 600;
+    color: var(--blue-bright);
+  }
+  .project-link:hover .arrow { transform: translateX(3px); }
+  .project-link .arrow { transition: transform .2s ease; }
+</style>
+</head>
+<body>
+
+<!-- ───────── Nav ───────── -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand" aria-label="Ignacio Diaz">
+      <span class="brand-mark" aria-hidden="true">ID</span>
+      <span>Ignacio Diaz</span>
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Principal">
+      <a href="#stack">Stack</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#como-trabajo">Cómo trabajo</a>
+      <a href="blog.html">Blog</a>
+      <a href="#contacto" class="nav-cta">Contacto →</a>
+    </nav>
+    <button class="nav-mobile-toggle" id="nav-toggle" aria-label="Abrir menú" aria-controls="nav-links" aria-expanded="false">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- ───────── Hero ───────── -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="eyebrow reveal"><span class="dot"></span>Full-stack Developer · Buenos Aires</span>
+    <h1 class="headline reveal">Hola, soy Ignacio. Construyo <span class="accent">aplicaciones</span> de punta a punta.</h1>
+    <p class="sub reveal">Desarrollador autodidacta. Desarrollo aplicaciones completas, desde la interfaz hasta la base de datos, la infraestructura en Linux y el deploy: sistemas de reservas y GymSoft, una plataforma SaaS multi-tenant que hoy está en producción. Uso inteligencia artificial como parte de mi flujo de desarrollo. También exploro seguridad web a través de CTFs.</p>
+    <div class="hero-ctas reveal">
+      <a href="#proyectos" class="btn btn-primary">Ver proyectos <span class="arrow">→</span></a>
+      <a href="#contacto" class="btn btn-ghost">Contactame</a>
+    </div>
+    <div class="hero-meta reveal">
+      <span>Buenos Aires, Argentina</span>
+      <span>Frontend, backend e infraestructura</span>
+      <span>Proyectos en producción</span>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── Stack ───────── -->
+<section class="block" id="stack">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-tag">stack</span>
+      <h2 class="section-title">Las herramientas con las que trabajo.</h2>
+      <p class="section-sub">Frontend, backend e infraestructura. Primero los fundamentos, después los frameworks: ese es el orden en el que aprendí y en el que construyo.</p>
+    </div>
+    <div class="services-grid">
+      <article class="service reveal">
+        <div class="service-icon"><img src="assets/img/react.svg" alt="" /></div>
+        <h3>Frontend</h3>
+        <p>Interfaces de aplicación con React y TypeScript, sobre una base sólida de HTML, CSS y JavaScript.</p>
+        <div class="service-tags"><span class="service-tag">React</span><span class="service-tag">TypeScript</span><span class="service-tag">Vite</span></div>
+      </article>
+
+      <article class="service reveal">
+        <div class="service-icon"><img src="assets/img/tailwindcss.svg" alt="" /></div>
+        <h3>UI &amp; estilos</h3>
+        <p>Tailwind CSS para iterar rápido sin perder consistencia, diseño responsive y aplicaciones instalables como PWA.</p>
+        <div class="service-tags"><span class="service-tag">Tailwind CSS</span><span class="service-tag">Responsive</span><span class="service-tag">PWA</span></div>
+      </article>
+
+      <article class="service reveal">
+        <div class="service-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
         </div>
-        <!-- Script Section -->
-        <section>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <!-- * *                               kit fontawesome                           * *-->
-        <script src="https://kit.fontawesome.com/5e3c16c5c8.js" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-        <script type="text/javascript">emailjs.init('rxhajbCVGAYjB66EB')</script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-        <script type="text/javascript">
-            emailjs.init('rxhajbCVGAYjB66EB')
-        </script>
-        </section>
-    </body>
+        <h3>Backend &amp; datos</h3>
+        <p>Supabase autohospedado sobre PostgreSQL: autenticación, modelado de datos y APIs para aplicaciones reales.</p>
+        <div class="service-tags"><span class="service-tag">Supabase</span><span class="service-tag">PostgreSQL</span><span class="service-tag">Auth</span></div>
+      </article>
 
+      <article class="service reveal">
+        <div class="service-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        </div>
+        <h3>Arquitectura SaaS</h3>
+        <p>Plataformas multi-tenant donde cada cliente tiene su propio espacio y su landing con dominio personalizado.</p>
+        <div class="service-tags"><span class="service-tag">Multi-tenant</span><span class="service-tag">Dominios custom</span></div>
+      </article>
+
+      <article class="service reveal">
+        <div class="service-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="7" rx="2"/><rect x="2" y="14" width="20" height="7" rx="2"/><line x1="6" y1="6.5" x2="6.01" y2="6.5"/><line x1="6" y1="17.5" x2="6.01" y2="17.5"/></svg>
+        </div>
+        <h3>Infraestructura &amp; deploy</h3>
+        <p>Contenedores con Docker y Nginx, deploys con Dokploy en servidor propio y DNS gestionado en Cloudflare.</p>
+        <div class="service-tags"><span class="service-tag">Docker</span><span class="service-tag">Nginx</span><span class="service-tag">Dokploy</span><span class="service-tag">Cloudflare</span></div>
+      </article>
+
+      <article class="service reveal">
+        <div class="service-icon"><img src="assets/img/github.svg" alt="" /></div>
+        <h3>Git &amp; flujo de trabajo</h3>
+        <p>Control de versiones con commits convencionales y deploys que salen directo del repositorio.</p>
+        <div class="service-tags"><span class="service-tag">Git</span><span class="service-tag">GitHub</span><span class="service-tag">Conventional Commits</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── Projects ───────── -->
+<section class="block process" id="proyectos">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-tag">proyectos</span>
+      <h2 class="section-title">Proyectos en producción.</h2>
+      <p class="section-sub">Aplicaciones que diseñé, desarrollé y hoy están en uso.</p>
+    </div>
+    <div class="projects">
+      <article class="project reveal">
+        <div class="project-thumb" aria-hidden="true">
+          <div class="browser-bar"><i></i><i></i><i></i><span class="browser-url">laesquinadecobo.com.ar</span></div>
+          <div class="browser-view">La Esquina de Cobo</div>
+        </div>
+        <div class="project-body">
+          <h3>La Esquina de Cobo</h3>
+          <p>Aplicación para complejos de alojamiento con catálogo de complejos y paquetes, acceso de usuarios y reservas online.</p>
+          <div class="service-tags" style="margin: -6px 0 20px;"><span class="service-tag">Reservas</span><span class="service-tag">Turismo</span></div>
+          <a class="project-link" href="https://laesquinadecobo.com.ar" target="_blank" rel="noopener">Ver en vivo <span class="arrow">→</span></a>
+        </div>
+      </article>
+      <article class="project reveal">
+        <div class="project-thumb" aria-hidden="true">
+          <div class="browser-bar"><i></i><i></i><i></i><span class="browser-url">fortalezafit.com.ar</span></div>
+          <div class="browser-view">GymSoft</div>
+        </div>
+        <div class="project-body">
+          <h3>GymSoft · Fortaleza Fit</h3>
+          <p>Plataforma fitness multi-tenant para entrenadores y gimnasios: cada cliente tiene su propia landing con dominio personalizado.</p>
+          <div class="service-tags" style="margin: -6px 0 20px;"><span class="service-tag">SaaS</span><span class="service-tag">React</span><span class="service-tag">Supabase</span></div>
+          <a class="project-link" href="https://fortalezafit.com.ar" target="_blank" rel="noopener">Ver en vivo <span class="arrow">→</span></a>
+        </div>
+      </article>
+      <article class="project reveal">
+        <div class="project-thumb" aria-hidden="true">
+          <div class="browser-bar"><i></i><i></i><i></i><span class="browser-url">merysanchez.com.ar</span></div>
+          <div class="browser-view">Mery Entrena</div>
+        </div>
+        <div class="project-body">
+          <h3>Mery Entrena</h3>
+          <p>Landing de entrenadora personal con dominio propio, servida desde GymSoft.</p>
+          <div class="service-tags" style="margin: -6px 0 20px;"><span class="service-tag">Landing</span><span class="service-tag">GymSoft</span></div>
+          <a class="project-link" href="https://merysanchez.com.ar" target="_blank" rel="noopener">Ver en vivo <span class="arrow">→</span></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── How I work ───────── -->
+<section class="block" id="como-trabajo">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-tag">cómo trabajo</span>
+      <h2 class="section-title">Simple, directo y bien hecho.</h2>
+      <p class="section-sub">Hablás directamente conmigo, desde la primera idea hasta la aplicación en producción.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </div>
+        <h3>Entiendo el problema</h3>
+        <p>Antes de escribir código, defino qué necesitás, quién la va a usar y qué tiene que resolver.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3>Construyo</h3>
+        <p>Desarrollo con avances visibles y el código versionado en Git desde el primer día.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+        </div>
+        <h3>Despliego</h3>
+        <p>Llevo la aplicación a producción en mi propia infraestructura, la monitoreo y la sigo mejorando.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── Contact ───────── -->
+<section class="final" id="contacto">
+  <div class="wrap">
+    <div class="final-card reveal">
+      <h2>¿Tenés un proyecto en mente?</h2>
+      <p>Contame qué necesitás y lo charlamos. Respondo por email o por WhatsApp.</p>
+      <div class="final-ctas">
+        <a href="mailto:informatica.diaz@gmail.com?subject=Contacto%20desde%20el%20portfolio" class="btn btn-primary">Escribime <span class="arrow">→</span></a>
+        <a href="https://wa.me/541136373618" target="_blank" rel="noopener" class="btn btn-ghost">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── Footer ───────── -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#top" class="brand">
+          <span class="brand-mark" aria-hidden="true">ID</span>
+          <span>Ignacio Diaz</span>
+        </a>
+        <p>Full-stack Developer autodidacta. Buenos Aires, Argentina.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Secciones</h4>
+        <ul>
+          <li><a href="#stack">Stack</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#como-trabajo">Cómo trabajo</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Redes</h4>
+        <ul>
+          <li><a href="https://github.com/informaticadiaz" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/diazignacio/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://twitter.com/DiazIgnacioDev" target="_blank" rel="noopener">Twitter</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:informatica.diaz@gmail.com">informatica.diaz@gmail.com</a></li>
+          <li><a href="https://wa.me/541136373618" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li>Buenos Aires, Argentina</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Ignacio Diaz.</span>
+      <div class="socials" aria-label="Redes sociales">
+        <a class="social" href="https://www.linkedin.com/in/diazignacio/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8h4.56v14H.22V8zm7.6 0h4.37v1.92h.06c.61-1.15 2.1-2.36 4.32-2.36 4.62 0 5.47 3.04 5.47 7v7.44h-4.56v-6.6c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.49V22H7.82V8z"/></svg></a>
+        <a class="social" href="https://github.com/informaticadiaz" target="_blank" rel="noopener" aria-label="GitHub"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.79 23.4c.6.1.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.72-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.09-.74.09-.73.09-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.31-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.87.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22 0 1.6-.01 2.89-.01 3.29 0 .32.21.7.83.58A12 12 0 0 0 12 .3"/></svg></a>
+        <a class="social" href="https://twitter.com/DiazIgnacioDev" target="_blank" rel="noopener" aria-label="Twitter"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21l-6.518 7.45L22 22h-6.39l-5-6.54L4.8 22H2.04l6.97-7.97L2 2h6.55l4.52 5.97L18.244 2zm-1.12 18h1.83L7.04 4H5.08l12.044 16z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Sticky nav style on scroll
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    if (window.scrollY > 12) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  document.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Mobile menu
+  const toggle = document.getElementById('nav-toggle');
+  const setMenu = (open) => {
+    nav.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+  };
+  toggle.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
+  document.querySelectorAll('#nav-links a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    }
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = (Math.min(i % 6, 5) * 60) + 'ms';
+    io.observe(el);
+  });
+
+  // Smooth-scroll fallback for # anchors (browsers vary on header offset)
+  const NAV_OFFSET = 76;
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href').slice(1);
+      if (!id) return;
+      const t = document.getElementById(id);
+      if (!t) return;
+      e.preventDefault();
+      const y = t.getBoundingClientRect().top + window.pageYOffset - NAV_OFFSET;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
 </html>

@@ -15,6 +15,19 @@ not the intended Pages deployment and must not be mapped to the custom domain.
 - `nodo/`: Claude Design handoff bundle, separate from the root website.
 - `data/`: local ignored execution data.
 
+## Owner Profile
+
+- Ignacio Diaz, full-stack developer based in Buenos Aires, Argentina.
+- Builds applications, not websites: SaaS platforms, booking systems and
+  multi-tenant products. Portfolio copy must say "aplicaciones", never "sitios".
+- Works with AI as part of the development workflow (AI-assisted development
+  and agent tooling).
+- Has hands-on Linux and DevOps experience: self-hosted servers, Docker,
+  Nginx, Dokploy, self-hosted Supabase and Cloudflare.
+- The exact technology list for the portfolio stack is still being confirmed
+  with the owner; do not add technologies he has not confirmed or that are not
+  evidenced in his projects.
+
 ## Decisions
 
 - The workspace replaces the former `root` repository at this path.
@@ -25,6 +38,19 @@ not the intended Pages deployment and must not be mapped to the custom domain.
   `scripts/build-pages.sh` from the `main` branch.
 - Keep `diazignacio.ar` as the canonical hostname and redirect
   `www.diazignacio.ar` to it after the Pages cutover.
+- `index.html` is Ignacio Diaz's personal portfolio (not the former "Vértice"
+  agency landing). Do not add invented stats or testimonials.
+- The legacy projects Baires Real Estate and Messi Nuestro are no longer
+  relevant. Do not feature them in the portfolio; the projects section must be
+  filled with current projects provided by the user.
+- Current portfolio projects: La Esquina de Cobo (`laesquinadecobo.com.ar`,
+  accommodation complexes with packages and online booking), GymSoft / Fortaleza
+  Fit (`fortalezafit.com.ar`, multi-tenant fitness platform with per-trainer
+  landings on custom domains, backed by `supabase.diazignacio.ar`), and Mery
+  Entrena (`merysanchez.com.ar`, trainer landing served by GymSoft). The user
+  wrote `forttalezafit.com.ar`, which does not resolve; the live domain is
+  `fortalezafit.com.ar`. No screenshots exist yet; cards use a CSS browser
+  mockup instead of images.
 
 ## Next Steps
 
