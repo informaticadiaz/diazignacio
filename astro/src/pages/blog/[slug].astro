@@ -1,0 +1,344 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+
+const posts: Record<string, {
+	title: string;
+	date: string;
+	category: string;
+	readTime: string;
+	content: string;
+}> = {
+	'getting-started-with-astro': {
+		title: 'Getting Started with Astro',
+		date: 'May 21, 2024',
+		category: 'Tutorial',
+		readTime: '5 min read',
+		content: `
+			<h2>What is Astro?</h2>
+			<p>Astro is a modern web framework that delivers less JavaScript to the browser. It's designed with a focus on performance and developer experience.</p>
+
+			<h2>Key Features</h2>
+			<ul>
+				<li><strong>Island Architecture:</strong> Ship interactive components independently</li>
+				<li><strong>Zero JavaScript by Default:</strong> Static HTML output for better performance</li>
+				<li><strong>Framework Agnostic:</strong> Use React, Vue, Svelte, or vanilla JavaScript</li>
+				<li><strong>Built-in Optimizations:</strong> Automatic image optimization and code splitting</li>
+			</ul>
+
+			<h2>Getting Started</h2>
+			<pre><code>npm create astro@latest
+cd my-astro-project
+npm run dev</code></pre>
+
+			<h2>Why Choose Astro?</h2>
+			<p>Astro is perfect for content-heavy sites, documentation, blogs, and static sites that need some interactivity. The island architecture allows you to use JavaScript only where you need it, resulting in faster load times and better Core Web Vitals.</p>
+		`,
+	},
+	'react-hooks-guide': {
+		title: 'Understanding React Hooks: A Comprehensive Guide',
+		date: 'May 15, 2024',
+		category: 'React',
+		readTime: '8 min read',
+		content: `
+			<h2>What are React Hooks?</h2>
+			<p>React Hooks are functions that let you "hook into" React features. They enable you to use state and other React features in functional components.</p>
+
+			<h2>useState Hook</h2>
+			<p>The most commonly used hook. It lets you add state to functional components:</p>
+			<pre><code>const [count, setCount] = useState(0);</code></pre>
+
+			<h2>useEffect Hook</h2>
+			<p>The useEffect hook lets you perform side effects in functional components. It serves the same purpose as componentDidMount, componentDidUpdate, and componentWillUnmount combined.</p>
+
+			<h2>Custom Hooks</h2>
+			<p>You can create your own hooks to extract component logic into reusable functions. This is one of the most powerful features of React Hooks.</p>
+
+			<h2>Rules of Hooks</h2>
+			<ul>
+				<li>Only call hooks at the top level</li>
+				<li>Only call hooks from React function components</li>
+				<li>Use ESLint plugin to enforce these rules</li>
+			</ul>
+		`,
+	},
+	'tailwind-css-tips': {
+		title: 'Tailwind CSS Tips & Tricks',
+		date: 'May 10, 2024',
+		category: 'CSS',
+		readTime: '6 min read',
+		content: `
+			<h2>Utility-First CSS</h2>
+			<p>Tailwind CSS is a utility-first CSS framework. Instead of writing custom CSS, you compose your styles using pre-made utility classes.</p>
+
+			<h2>Common Patterns</h2>
+			<ul>
+				<li><strong>Responsive Design:</strong> Use breakpoint prefixes like md:, lg:, xl:</li>
+				<li><strong>Dark Mode:</strong> Use dark: prefix for dark mode styles</li>
+				<li><strong>Hover States:</strong> Use hover:, focus:, active: prefixes</li>
+			</ul>
+
+			<h2>Performance Tips</h2>
+			<p>Tailwind automatically purges unused CSS in production. Always configure your template paths correctly in tailwind.config.js to ensure all classes are included.</p>
+
+			<h2>Advanced Customization</h2>
+			<p>Customize colors, spacing, fonts, and more in your tailwind.config.js file. You can also create custom utility classes for repeated patterns.</p>
+		`,
+	},
+	'web-security-basics': {
+		title: 'Web Security Basics for Developers',
+		date: 'May 5, 2024',
+		category: 'Security',
+		readTime: '7 min read',
+		content: `
+			<h2>Common Web Vulnerabilities</h2>
+			<p>As developers, it's crucial to understand common security vulnerabilities and how to prevent them.</p>
+
+			<h2>Cross-Site Scripting (XSS)</h2>
+			<p>XSS occurs when an attacker injects malicious scripts into web pages. Always sanitize user input and use Content Security Policy headers.</p>
+
+			<h2>Cross-Site Request Forgery (CSRF)</h2>
+			<p>CSRF attacks trick users into making unwanted requests. Use CSRF tokens and implement proper cookie security.</p>
+
+			<h2>SQL Injection</h2>
+			<p>Prevent SQL injection by using prepared statements and parameterized queries. Never concatenate user input directly into SQL queries.</p>
+
+			<h2>Best Practices</h2>
+			<ul>
+				<li>Keep dependencies updated</li>
+				<li>Use HTTPS for all communications</li>
+				<li>Implement proper authentication and authorization</li>
+				<li>Validate all user input</li>
+				<li>Use security headers like CSP, X-Frame-Options, etc.</li>
+			</ul>
+		`,
+	},
+	'typescript-advanced': {
+		title: 'Advanced TypeScript Patterns',
+		date: 'April 28, 2024',
+		category: 'TypeScript',
+		readTime: '9 min read',
+		content: `
+			<h2>Generics</h2>
+			<p>Generics allow you to create reusable components that work with various types. They enable type safety while maintaining flexibility.</p>
+
+			<h2>Union and Intersection Types</h2>
+			<p>Union types (|) allow a value to be one of several types. Intersection types (&) combine multiple types into one.</p>
+
+			<h2>Type Guards</h2>
+			<p>Type guards help narrow down types in conditional statements. Use typeof, instanceof, and custom type guards for better type safety.</p>
+
+			<h2>Advanced Utility Types</h2>
+			<p>TypeScript provides utility types like Partial, Pick, Omit, Record, and more. These help you transform and manipulate types programmatically.</p>
+
+			<h2>Module Patterns</h2>
+			<p>Organize your code with namespaces and modules. Use barrel exports to simplify imports and maintain a clean API.</p>
+		`,
+	},
+};
+
+const { slug } = Astro.params;
+const post = posts[slug!];
+
+if (!post) {
+	return Astro.redirect('/blog');
+}
+---
+
+<Layout title={`${post.title} - Blog`}>
+	<Header />
+
+	<article class="blog-post">
+		<div class="container">
+			<a href="/blog" class="back-link">← Back to Blog</a>
+
+			<header class="post-header">
+				<h1>{post.title}</h1>
+				<div class="meta">
+					<span class="date">{post.date}</span>
+					<span class="separator">•</span>
+					<span class="category">{post.category}</span>
+					<span class="separator">•</span>
+					<span class="read-time">{post.readTime}</span>
+				</div>
+			</header>
+
+			<div class="post-content" set:html={post.content} />
+
+			<footer class="post-footer">
+				<div class="footer-content">
+					<p>Have thoughts on this post? Feel free to reach out on <a href="https://github.com/informaticadiaz">GitHub</a>.</p>
+				</div>
+			</footer>
+		</div>
+	</article>
+
+	<section class="other-posts">
+		<div class="container">
+			<h2>More Posts</h2>
+			<a href="/blog" class="btn">View All Posts</a>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.blog-post {
+		padding: 4rem 2rem;
+		min-height: 60vh;
+	}
+
+	.container {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+
+	.back-link {
+		color: rgb(136, 58, 234);
+		text-decoration: none;
+		font-weight: 600;
+		transition: all 0.2s ease;
+		display: inline-block;
+		margin-bottom: 2rem;
+	}
+
+	.back-link:hover {
+		color: rgb(224, 204, 250);
+		transform: translateX(-4px);
+	}
+
+	.post-header {
+		margin-bottom: 3rem;
+		padding-bottom: 2rem;
+		border-bottom: 1px solid rgba(136, 58, 234, 0.2);
+	}
+
+	h1 {
+		font-size: 2.5rem;
+		margin: 0 0 1rem 0;
+		color: rgb(224, 204, 250);
+	}
+
+	.meta {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: #a0a0a0;
+		font-size: 0.95rem;
+	}
+
+	.separator {
+		color: #606060;
+	}
+
+	.post-content {
+		color: #c0c0c0;
+		line-height: 1.8;
+		font-size: 1.05rem;
+	}
+
+	.post-content h2 {
+		color: rgb(224, 204, 250);
+		margin: 2rem 0 1rem 0;
+		font-size: 1.5rem;
+	}
+
+	.post-content p {
+		margin-bottom: 1.5rem;
+	}
+
+	.post-content ul {
+		margin: 1.5rem 0;
+		padding-left: 2rem;
+	}
+
+	.post-content li {
+		margin-bottom: 0.75rem;
+		color: #c0c0c0;
+	}
+
+	.post-content code {
+		background: rgba(136, 58, 234, 0.1);
+		color: rgb(224, 204, 250);
+		padding: 0.2em 0.4em;
+		border-radius: 4px;
+		font-family: 'Courier New', monospace;
+	}
+
+	.post-content pre {
+		background: rgba(0, 0, 0, 0.5);
+		border: 1px solid rgba(136, 58, 234, 0.2);
+		border-radius: 8px;
+		padding: 1.5rem;
+		overflow-x: auto;
+		margin: 1.5rem 0;
+	}
+
+	.post-content pre code {
+		background: none;
+		color: rgb(224, 204, 250);
+		padding: 0;
+	}
+
+	.post-footer {
+		margin-top: 3rem;
+		padding-top: 2rem;
+		border-top: 1px solid rgba(136, 58, 234, 0.2);
+	}
+
+	.footer-content p {
+		color: #a0a0a0;
+		margin: 0;
+	}
+
+	.footer-content a {
+		color: rgb(136, 58, 234);
+		text-decoration: none;
+		font-weight: 600;
+	}
+
+	.footer-content a:hover {
+		color: rgb(224, 204, 250);
+	}
+
+	.other-posts {
+		padding: 4rem 2rem;
+		background: rgba(136, 58, 234, 0.05);
+		border-top: 1px solid rgba(136, 58, 234, 0.2);
+		text-align: center;
+	}
+
+	.other-posts h2 {
+		color: rgb(224, 204, 250);
+		margin-bottom: 1.5rem;
+	}
+
+	.btn {
+		display: inline-block;
+		padding: 0.75rem 1.5rem;
+		background: linear-gradient(45deg, rgb(136, 58, 234), rgb(224, 204, 250));
+		color: white;
+		text-decoration: none;
+		border-radius: 8px;
+		font-weight: 600;
+		transition: all 0.3s ease;
+	}
+
+	.btn:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 10px 20px rgba(136, 58, 234, 0.3);
+	}
+
+	@media (max-width: 768px) {
+		.blog-post {
+			padding: 2rem 1rem;
+		}
+
+		h1 {
+			font-size: 1.8rem;
+		}
+
+		.post-content {
+			font-size: 1rem;
+		}
+	}
+</style>

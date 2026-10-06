@@ -1,0 +1,209 @@
+---
+const projects = [
+	{
+		title: 'Pasear',
+		description: 'A Progressive Web App (PWA) for exploring Buenos Aires. Built with TypeScript to help users discover places and experiences in the city.',
+		tags: ['TypeScript', 'PWA', 'React'],
+		github: 'https://github.com/informaticadiaz/pasear',
+		featured: true,
+	},
+	{
+		title: 'Blog Astro Dev',
+		description: 'A modern blog platform built with Astro. Fast, optimized, and perfect for sharing development insights.',
+		tags: ['Astro', 'HTML', 'Markdown'],
+		github: 'https://github.com/informaticadiaz/blog-astro-dev',
+		featured: true,
+	},
+	{
+		title: 'Blog Dev',
+		description: 'A blog project using MDX for rich content creation. Combines markdown with React components for interactive posts.',
+		tags: ['TypeScript', 'MDX', 'React'],
+		github: 'https://github.com/informaticadiaz/blog-dev',
+		featured: true,
+	},
+	{
+		title: 'Prensa',
+		description: 'News and media aggregation project built with modern web technologies.',
+		tags: ['TypeScript', 'React', 'APIs'],
+		github: 'https://github.com/informaticadiaz/prensa',
+		featured: false,
+	},
+];
+---
+
+<section class="projects">
+	<div class="container">
+		<h2>Featured Projects</h2>
+
+		<div class="projects-grid">
+			{projects.map(project => (
+				<div class="project-card">
+					<div class="project-header">
+						<h3>{project.title}</h3>
+						{project.featured && <span class="badge">Featured</span>}
+					</div>
+					<p class="description">{project.description}</p>
+					<div class="tags">
+						{project.tags.map(tag => (
+							<span class="tag">{tag}</span>
+						))}
+					</div>
+					<a href={project.github} target="_blank" class="github-link">
+						View on GitHub →
+					</a>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.projects {
+		padding: 4rem 2rem;
+		border-bottom: 1px solid rgba(136, 58, 234, 0.2);
+	}
+
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	h2 {
+		font-size: 2.5rem;
+		margin-bottom: 3rem;
+		color: rgb(224, 204, 250);
+		text-align: center;
+	}
+
+	.projects-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		gap: 2rem;
+	}
+
+	.project-card {
+		background: linear-gradient(135deg, rgba(136, 58, 234, 0.1) 0%, rgba(49, 10, 101, 0.05) 100%);
+		border: 1px solid rgba(136, 58, 234, 0.2);
+		border-radius: 12px;
+		padding: 2rem;
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		display: flex;
+		flex-direction: column;
+		animation: fadeInUp 0.6s ease-out forwards;
+		opacity: 0;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.project-card::before {
+		content: '';
+		position: absolute;
+		top: -100%;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(135deg, transparent 0%, rgba(136, 58, 234, 0.1) 50%, transparent 100%);
+		transition: top 0.6s ease;
+	}
+
+	.project-card:hover::before {
+		top: 100%;
+	}
+
+	.project-card:nth-child(1) {
+		animation-delay: 0.1s;
+	}
+
+	.project-card:nth-child(2) {
+		animation-delay: 0.2s;
+	}
+
+	.project-card:nth-child(3) {
+		animation-delay: 0.3s;
+	}
+
+	.project-card:nth-child(4) {
+		animation-delay: 0.4s;
+	}
+
+	.project-card:hover {
+		border-color: rgba(136, 58, 234, 0.6);
+		background: linear-gradient(135deg, rgba(136, 58, 234, 0.2) 0%, rgba(49, 10, 101, 0.15) 100%);
+		transform: translateY(-12px);
+		box-shadow: 0 30px 60px rgba(136, 58, 234, 0.3);
+	}
+
+	.project-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: start;
+		margin-bottom: 1rem;
+		gap: 1rem;
+	}
+
+	h3 {
+		color: rgb(224, 204, 250);
+		margin: 0;
+		font-size: 1.3rem;
+	}
+
+	.badge {
+		background: rgba(136, 58, 234, 0.3);
+		color: rgb(224, 204, 250);
+		padding: 0.25rem 0.75rem;
+		border-radius: 12px;
+		font-size: 0.75rem;
+		font-weight: 600;
+		white-space: nowrap;
+	}
+
+	.description {
+		color: #a0a0a0;
+		line-height: 1.6;
+		margin-bottom: 1.5rem;
+		flex-grow: 1;
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.tag {
+		display: inline-block;
+		background: rgba(136, 58, 234, 0.2);
+		color: rgb(136, 58, 234);
+		padding: 0.4rem 0.8rem;
+		border-radius: 16px;
+		font-size: 0.85rem;
+		border: 1px solid rgba(136, 58, 234, 0.3);
+	}
+
+	.github-link {
+		color: rgb(224, 204, 250);
+		text-decoration: none;
+		font-weight: 600;
+		transition: all 0.2s ease;
+		display: inline-block;
+	}
+
+	.github-link:hover {
+		color: rgb(136, 58, 234);
+	}
+
+	@media (max-width: 768px) {
+		.projects {
+			padding: 2rem 1rem;
+		}
+
+		h2 {
+			font-size: 2rem;
+		}
+
+		.projects-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

@@ -1,0 +1,138 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<header>
+	<nav>
+		<div class="logo">
+			<a href="/">DI</a>
+		</div>
+		<ul>
+			<li>
+				<a href="/" class={currentPath === '/' ? 'active' : ''}>Home</a>
+			</li>
+			<li>
+				<a href="/cv" class={currentPath === '/cv' ? 'active' : ''}>CV</a>
+			</li>
+			<li>
+				<a href="/blog" class={currentPath === '/blog' ? 'active' : ''}>Blog</a>
+			</li>
+			<li>
+				<a href="https://github.com/informaticadiaz" target="_blank">GitHub</a>
+			</li>
+		</ul>
+	</nav>
+</header>
+
+<style>
+	header {
+		position: sticky;
+		top: 0;
+		z-index: 100;
+		background: linear-gradient(180deg, rgba(19, 21, 26, 0.98) 0%, rgba(19, 21, 26, 0.95) 100%);
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+		border-bottom: 1px solid rgba(136, 58, 234, 0.2);
+		animation: slideDown 0.5s ease-out;
+	}
+
+	nav {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 1rem 2rem;
+	}
+
+	.logo a {
+		font-size: 1.5rem;
+		font-weight: 700;
+		background: linear-gradient(135deg, rgb(136, 58, 234), rgb(224, 204, 250), rgb(136, 58, 234));
+		background-size: 300% 300%;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		text-decoration: none;
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		animation: fadeInLeft 0.6s ease-out;
+	}
+
+	.logo a:hover {
+		transform: scale(1.15) rotate(2deg);
+		filter: drop-shadow(0 0 10px rgba(136, 58, 234, 0.6));
+	}
+
+	ul {
+		display: flex;
+		gap: 2rem;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	li {
+		animation: fadeInDown 0.6s ease-out;
+	}
+
+	li:nth-child(2) {
+		animation-delay: 0.1s;
+	}
+
+	li:nth-child(3) {
+		animation-delay: 0.2s;
+	}
+
+	li:nth-child(4) {
+		animation-delay: 0.3s;
+	}
+
+	a {
+		color: #c0c0c0;
+		text-decoration: none;
+		font-size: 0.95rem;
+		font-weight: 500;
+		position: relative;
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	a::before {
+		content: '';
+		position: absolute;
+		bottom: -3px;
+		left: 0;
+		width: 0;
+		height: 2px;
+		background: linear-gradient(90deg, rgb(136, 58, 234), rgb(224, 204, 250));
+		transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	a:hover {
+		color: rgb(224, 204, 250);
+	}
+
+	a:hover::before {
+		width: 100%;
+	}
+
+	a.active {
+		color: rgb(224, 204, 250);
+	}
+
+	a.active::before {
+		width: 100%;
+	}
+
+	@media (max-width: 768px) {
+		nav {
+			flex-direction: column;
+			gap: 1rem;
+		}
+
+		ul {
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 1rem;
+		}
+	}
+</style>

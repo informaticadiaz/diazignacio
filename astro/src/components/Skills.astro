@@ -1,0 +1,170 @@
+---
+const skills = {
+	frontend: ['React', 'Next.js', 'Astro', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'HTML5', 'CSS3'],
+	backend: ['Node.js', 'Express', 'MongoDB', 'REST APIs'],
+	tools: ['Git', 'GitHub', 'VS Code', 'Figma', 'Docker', 'Postman', 'Linux'],
+	other: ['PWA', 'CTF', 'Material UI'],
+};
+---
+
+<section class="skills">
+	<div class="container">
+		<h2>Skills & Technologies</h2>
+
+		<div class="skills-grid">
+			<div class="skill-category">
+				<h3>Frontend</h3>
+				<div class="tags">
+					{skills.frontend.map(skill => (
+						<span class="tag">{skill}</span>
+					))}
+				</div>
+			</div>
+
+			<div class="skill-category">
+				<h3>Backend</h3>
+				<div class="tags">
+					{skills.backend.map(skill => (
+						<span class="tag">{skill}</span>
+					))}
+				</div>
+			</div>
+
+			<div class="skill-category">
+				<h3>Tools & Platforms</h3>
+				<div class="tags">
+					{skills.tools.map(skill => (
+						<span class="tag">{skill}</span>
+					))}
+				</div>
+			</div>
+
+			<div class="skill-category">
+				<h3>Other</h3>
+				<div class="tags">
+					{skills.other.map(skill => (
+						<span class="tag">{skill}</span>
+					))}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.skills {
+		padding: 4rem 2rem;
+		background: rgba(136, 58, 234, 0.05);
+		border-bottom: 1px solid rgba(136, 58, 234, 0.2);
+	}
+
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	h2 {
+		font-size: 2.5rem;
+		margin-bottom: 3rem;
+		color: rgb(224, 204, 250);
+		text-align: center;
+	}
+
+	.skills-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 2rem;
+	}
+
+	.skill-category {
+		background: rgba(19, 21, 26, 0.5);
+		padding: 2rem;
+		border-radius: 12px;
+		border: 1px solid rgba(136, 58, 234, 0.2);
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		animation: fadeInUp 0.6s ease-out forwards;
+		opacity: 0;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.skill-category::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: -100%;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(90deg, transparent, rgba(136, 58, 234, 0.1), transparent);
+		transition: left 0.5s ease;
+	}
+
+	.skill-category:hover::before {
+		left: 100%;
+	}
+
+	.skill-category:nth-child(1) {
+		animation-delay: 0.1s;
+	}
+
+	.skill-category:nth-child(2) {
+		animation-delay: 0.2s;
+	}
+
+	.skill-category:nth-child(3) {
+		animation-delay: 0.3s;
+	}
+
+	.skill-category:nth-child(4) {
+		animation-delay: 0.4s;
+	}
+
+	.skill-category:hover {
+		background: rgba(136, 58, 234, 0.15);
+		border-color: rgba(136, 58, 234, 0.6);
+		transform: translateY(-8px);
+		box-shadow: 0 20px 40px rgba(136, 58, 234, 0.2);
+	}
+
+	.skill-category h3 {
+		color: rgb(136, 58, 234);
+		margin-bottom: 1rem;
+		font-size: 1.2rem;
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+	}
+
+	.tag {
+		display: inline-block;
+		background: rgba(136, 58, 234, 0.2);
+		color: rgb(224, 204, 250);
+		padding: 0.5rem 1rem;
+		border-radius: 20px;
+		font-size: 0.9rem;
+		border: 1px solid rgba(136, 58, 234, 0.3);
+		transition: all 0.2s ease;
+	}
+
+	.tag:hover {
+		background: rgba(136, 58, 234, 0.3);
+		border-color: rgb(136, 58, 234);
+	}
+
+	@media (max-width: 768px) {
+		.skills {
+			padding: 2rem 1rem;
+		}
+
+		h2 {
+			font-size: 2rem;
+		}
+
+		.skills-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

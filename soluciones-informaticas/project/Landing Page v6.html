@@ -1,0 +1,1159 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vértice — Soluciones informáticas</title>
+<meta name="description" content="Software a medida, automatización y consultoría técnica para pymes en Latinoamérica." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    /* iOS-inspired neutrals */
+    --bg: #F2F2F7;        /* systemGroupedBackground */
+    --surface: #FFFFFF;
+    --surface-2: #F9F9FB;
+    --label: #000000;
+    --label-2: rgba(60,60,67,0.88);
+    --label-3: rgba(60,60,67,0.60);
+    --label-4: rgba(60,60,67,0.30);
+    --separator: rgba(60,60,67,0.12);
+    --separator-strong: rgba(60,60,67,0.20);
+    --fill-1: rgba(120,120,128,0.08);
+    --fill-2: rgba(120,120,128,0.16);
+
+    /* iOS system colors */
+    --blue: #007AFF;
+    --indigo: #5856D6;
+    --teal: #30B0C7;
+    --green: #34C759;
+    --orange: #FF9500;
+    --pink: #FF2D55;
+    --purple: #AF52DE;
+
+    --max: 1080px;
+    --pad: clamp(20px, 4vw, 32px);
+    --radius-sm: 12px;
+    --radius: 18px;
+    --radius-lg: 28px;
+    --radius-xl: 44px;
+
+    --sf: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--label);
+    font-family: var(--sf);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.45;
+    letter-spacing: -0.011em;
+  }
+  ::selection { background: rgba(0,122,255,0.22); }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; }
+  img, svg { display: block; max-width: 100%; }
+
+  .wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding-left: var(--pad);
+    padding-right: var(--pad);
+  }
+
+  /* ───────── Nav (iOS large title pattern) ───────── */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(242,242,247,0.72);
+    -webkit-backdrop-filter: saturate(180%) blur(24px);
+    backdrop-filter: saturate(180%) blur(24px);
+    border-bottom: 0.5px solid var(--separator);
+  }
+  .nav-inner {
+    height: 52px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: -0.022em;
+  }
+  .brand-mark {
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    background: linear-gradient(180deg, var(--blue) 0%, #0A63D9 100%);
+    color: white;
+    display: grid; place-items: center;
+    font-size: 15px; font-weight: 700;
+    letter-spacing: -0.02em;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.25);
+  }
+  .nav-links {
+    display: flex; gap: 4px;
+    background: var(--fill-1);
+    padding: 4px;
+    border-radius: 999px;
+  }
+  .nav-links a {
+    padding: 7px 14px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--label-2);
+    transition: background .18s, color .18s;
+  }
+  .nav-links a:hover { color: var(--label); }
+  .nav-cta {
+    padding: 9px 16px;
+    background: var(--blue);
+    color: white;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: transform .15s, background .15s;
+  }
+  .nav-cta:hover { background: #0A63D9; transform: translateY(-0.5px); }
+  @media (max-width: 760px) {
+    .nav-links { display: none; }
+  }
+
+  /* ───────── Buttons ───────── */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 8px;
+    padding: 14px 24px;
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: 16px;
+    border: none;
+    transition: transform .15s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
+    letter-spacing: -0.012em;
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn-primary {
+    background: var(--blue);
+    color: white;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06), 0 8px 20px rgba(0,122,255,0.20);
+  }
+  .btn-primary:hover { background: #0A63D9; }
+  .btn-ghost {
+    background: var(--fill-1);
+    color: var(--label);
+  }
+  .btn-ghost:hover { background: var(--fill-2); }
+  .btn .arrow {
+    transition: transform .18s ease;
+    display: inline-flex;
+  }
+  .btn:hover .arrow { transform: translateX(2px); }
+
+  /* ───────── Hero ───────── */
+  .hero {
+    padding: clamp(64px, 10vw, 120px) 0 clamp(48px, 8vw, 80px);
+    text-align: center;
+    position: relative;
+  }
+  .pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 7px 14px;
+    background: var(--surface);
+    border: 0.5px solid var(--separator);
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--label-2);
+    margin-bottom: 28px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  }
+  .pill .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 0 4px rgba(52,199,89,0.18);
+  }
+
+  h1.headline {
+    margin: 0 auto 20px;
+    font-size: clamp(44px, 7.6vw, 88px);
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+    font-weight: 700;
+    max-width: 16ch;
+  }
+  h1.headline .grad {
+    background: linear-gradient(135deg, var(--blue) 0%, var(--indigo) 60%, var(--purple) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .deck {
+    max-width: 52ch;
+    margin: 0 auto 36px;
+    color: var(--label-2);
+    font-size: clamp(17px, 1.6vw, 20px);
+    line-height: 1.5;
+    font-weight: 400;
+  }
+  .hero-ctas {
+    display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+  }
+  .hero-meta {
+    margin-top: 36px;
+    display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;
+    font-size: 13px;
+    color: var(--label-3);
+  }
+  .hero-meta span { display: inline-flex; align-items: center; gap: 6px; }
+
+  /* ───────── Hero device mockup ───────── */
+  .device-stage {
+    margin: 64px auto 0;
+    max-width: 760px;
+    position: relative;
+  }
+  .phone {
+    width: 280px;
+    margin: 0 auto;
+    background: #1c1c1e;
+    border-radius: 48px;
+    padding: 10px;
+    box-shadow:
+      0 1px 1px rgba(255,255,255,0.5) inset,
+      0 30px 60px -20px rgba(0,0,0,0.30),
+      0 18px 30px -12px rgba(0,0,0,0.18);
+    position: relative;
+  }
+  .phone-screen {
+    background: #fff;
+    border-radius: 38px;
+    overflow: hidden;
+    aspect-ratio: 9/19.5;
+    position: relative;
+  }
+  .phone-notch {
+    position: absolute; top: 18px; left: 50%; transform: translateX(-50%);
+    width: 88px; height: 26px;
+    background: #1c1c1e;
+    border-radius: 999px;
+    z-index: 5;
+  }
+  .phone-status {
+    position: absolute; top: 18px; left: 24px; right: 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; font-weight: 600;
+    color: #000;
+    z-index: 6;
+    pointer-events: none;
+  }
+  .phone-status .right { display: flex; gap: 4px; align-items: center; }
+  .phone-app {
+    padding: 64px 16px 20px;
+    height: 100%;
+    background: linear-gradient(180deg, #F2F2F7 0%, #fff 100%);
+    overflow: hidden;
+  }
+  .phone-greet {
+    font-size: 11px;
+    color: var(--label-3);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+  }
+  .phone-title {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin-bottom: 14px;
+  }
+  .phone-card {
+    background: white;
+    border-radius: 14px;
+    padding: 12px 14px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px;
+  }
+  .phone-card-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: grid; place-items: center;
+    color: white;
+    flex-shrink: 0;
+  }
+  .phone-card-text {
+    flex: 1; min-width: 0;
+  }
+  .phone-card-title {
+    font-size: 13px; font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 1px;
+  }
+  .phone-card-sub {
+    font-size: 11px; color: var(--label-3);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .phone-card-val {
+    font-size: 13px; font-weight: 600;
+    color: var(--label);
+  }
+  .phone-card-val.up { color: var(--green); }
+
+  /* Floating sparkles around phone */
+  .float-card {
+    position: absolute;
+    background: var(--surface);
+    border: 0.5px solid var(--separator);
+    border-radius: 16px;
+    padding: 12px 14px;
+    box-shadow: 0 18px 40px -14px rgba(0,0,0,0.18), 0 4px 8px rgba(0,0,0,0.04);
+    display: flex; align-items: center; gap: 10px;
+    font-size: 13px;
+  }
+  .float-card .ico {
+    width: 28px; height: 28px; border-radius: 8px;
+    display: grid; place-items: center;
+    color: white;
+  }
+  .float-1 { left: 6%; top: 18%; animation: floatA 7s ease-in-out infinite; }
+  .float-2 { right: 4%; top: 28%; animation: floatB 8s ease-in-out infinite; }
+  .float-3 { left: 8%; bottom: 14%; animation: floatA 9s ease-in-out infinite reverse; }
+  @keyframes floatA { 50% { transform: translateY(-10px); } }
+  @keyframes floatB { 50% { transform: translateY(-14px); } }
+  @media (max-width: 720px) {
+    .float-card { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .float-card { animation: none; }
+  }
+
+  /* ───────── Section primitives ───────── */
+  section.block {
+    padding: clamp(56px, 8vw, 96px) 0;
+  }
+  .section-eyebrow {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--blue);
+    letter-spacing: 0.02em;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+  h2.section-title {
+    margin: 0 auto 18px;
+    text-align: center;
+    font-size: clamp(34px, 5.6vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    font-weight: 700;
+    max-width: 18ch;
+  }
+  h2.section-title .grad {
+    background: linear-gradient(135deg, var(--blue) 0%, var(--indigo) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .section-sub {
+    text-align: center;
+    margin: 0 auto 56px;
+    color: var(--label-2);
+    font-size: 17px;
+    line-height: 1.5;
+    max-width: 56ch;
+  }
+
+  /* ───────── Stats (segmented control vibe) ───────── */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 12px 32px -16px rgba(0,0,0,0.10);
+  }
+  @media (max-width: 720px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+  .stat {
+    text-align: center;
+    padding: 16px 8px;
+  }
+  .stat-num {
+    font-size: clamp(34px, 4.4vw, 48px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    background: linear-gradient(135deg, var(--blue), var(--indigo));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1;
+  }
+  .stat-label {
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--label-3);
+    font-weight: 500;
+  }
+
+  /* ───────── Services (iOS settings list / cards) ───────── */
+  .services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 880px) { .services { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .services { grid-template-columns: 1fr; } }
+
+  .service {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 24px;
+    border: 0.5px solid var(--separator);
+    transition: transform .25s ease, box-shadow .25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .service:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px -16px rgba(0,0,0,0.14), 0 4px 12px rgba(0,0,0,0.04);
+  }
+  .service-icon {
+    width: 44px; height: 44px;
+    border-radius: 11px;
+    display: grid; place-items: center;
+    color: white;
+    margin-bottom: 16px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 1px 2px rgba(0,0,0,0.08);
+  }
+  .icon-blue   { background: linear-gradient(180deg, #4FA3FF, #007AFF); }
+  .icon-indigo { background: linear-gradient(180deg, #7E7CE6, #5856D6); }
+  .icon-teal   { background: linear-gradient(180deg, #5BC8DC, #30B0C7); }
+  .icon-orange { background: linear-gradient(180deg, #FFB446, #FF9500); }
+  .icon-pink   { background: linear-gradient(180deg, #FF6481, #FF2D55); }
+  .icon-green  { background: linear-gradient(180deg, #5BD478, #34C759); }
+  .icon-purple { background: linear-gradient(180deg, #C076EC, #AF52DE); }
+
+  .service h3 {
+    margin: 0 0 6px;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .service p {
+    margin: 0 0 16px;
+    color: var(--label-2);
+    font-size: 14.5px;
+    line-height: 1.5;
+  }
+  .service-tags {
+    display: flex; gap: 6px; flex-wrap: wrap;
+  }
+  .service-tag {
+    font-size: 11.5px; font-weight: 500;
+    color: var(--label-2);
+    padding: 3px 9px;
+    background: var(--fill-1);
+    border-radius: 999px;
+  }
+
+  /* ───────── Process (iOS settings group) ───────── */
+  .process {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03), 0 12px 32px -16px rgba(0,0,0,0.08);
+  }
+  .step {
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    align-items: center;
+    gap: 18px;
+    padding: 22px 24px;
+    border-bottom: 0.5px solid var(--separator);
+    transition: background .15s;
+  }
+  .step:last-child { border-bottom: none; }
+  .step:hover { background: var(--surface-2); }
+  .step-num {
+    width: 44px; height: 44px;
+    border-radius: 11px;
+    display: grid; place-items: center;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+  }
+  .step-num.s1 { background: linear-gradient(180deg, #4FA3FF, #007AFF); }
+  .step-num.s2 { background: linear-gradient(180deg, #7E7CE6, #5856D6); }
+  .step-num.s3 { background: linear-gradient(180deg, #C076EC, #AF52DE); }
+  .step-body h3 {
+    margin: 0 0 4px;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .step-body p {
+    margin: 0;
+    color: var(--label-2);
+    font-size: 14.5px;
+    line-height: 1.5;
+    max-width: 60ch;
+  }
+  .step-meta {
+    text-align: right;
+    font-size: 13px;
+    color: var(--label-3);
+  }
+  .step-meta b {
+    display: block;
+    color: var(--label);
+    font-weight: 600;
+  }
+  @media (max-width: 720px) {
+    .step { grid-template-columns: 44px 1fr; gap: 14px; padding: 18px; }
+    .step-meta { grid-column: 2; text-align: left; }
+    .step-num { width: 36px; height: 36px; font-size: 15px; }
+  }
+
+  /* ───────── Why (feature grid) ───────── */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 720px) { .why-grid { grid-template-columns: 1fr; } }
+  .why {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 28px;
+    border: 0.5px solid var(--separator);
+    display: flex; gap: 18px;
+    align-items: flex-start;
+  }
+  .why-icon {
+    flex-shrink: 0;
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: grid; place-items: center;
+    color: white;
+  }
+  .why h3 {
+    margin: 0 0 6px;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .why p {
+    margin: 0;
+    color: var(--label-2);
+    font-size: 14.5px;
+    line-height: 1.5;
+  }
+
+  /* ───────── Testimonials ───────── */
+  .quotes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 880px) { .quotes { grid-template-columns: 1fr; } }
+  .quote {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 28px;
+    border: 0.5px solid var(--separator);
+    display: flex; flex-direction: column;
+  }
+  .quote-stars {
+    color: var(--orange);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    margin-bottom: 14px;
+  }
+  .quote-text {
+    flex: 1;
+    margin: 0 0 22px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--label);
+    letter-spacing: -0.012em;
+  }
+  .quote-author {
+    display: flex; align-items: center; gap: 12px;
+    padding-top: 18px;
+    border-top: 0.5px solid var(--separator);
+  }
+  .avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    color: white;
+    display: grid; place-items: center;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .av1 { background: linear-gradient(135deg, #FF6481, #FF2D55); }
+  .av2 { background: linear-gradient(135deg, #4FA3FF, #007AFF); }
+  .av3 { background: linear-gradient(135deg, #5BD478, #34C759); }
+  .quote-author .who { font-size: 14px; font-weight: 600; letter-spacing: -0.01em; }
+  .quote-author .where { font-size: 12.5px; color: var(--label-3); }
+
+  /* ───────── Final CTA ───────── */
+  .final {
+    padding: clamp(56px, 8vw, 96px) 0;
+  }
+  .final-card {
+    background:
+      radial-gradient(120% 80% at 0% 0%, rgba(88,86,214,0.85), transparent 60%),
+      radial-gradient(120% 80% at 100% 100%, rgba(175,82,222,0.85), transparent 60%),
+      linear-gradient(135deg, #007AFF 0%, #5856D6 60%, #AF52DE 100%);
+    color: white;
+    border-radius: var(--radius-xl);
+    padding: clamp(40px, 6vw, 72px) clamp(28px, 5vw, 56px);
+    text-align: center;
+    box-shadow: 0 24px 60px -20px rgba(88,86,214,0.45);
+    position: relative;
+    overflow: hidden;
+  }
+  .final-card::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 80%, rgba(255,255,255,0.12) 0, transparent 30%),
+      radial-gradient(circle at 80% 20%, rgba(255,255,255,0.10) 0, transparent 35%);
+    pointer-events: none;
+  }
+  .final-card .pill {
+    background: rgba(255,255,255,0.18);
+    border: 0.5px solid rgba(255,255,255,0.30);
+    color: white;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+  .final-card .pill .dot {
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.25);
+  }
+  .final-card h2 {
+    margin: 0 auto 16px;
+    font-size: clamp(36px, 6vw, 64px);
+    line-height: 1.04;
+    letter-spacing: -0.04em;
+    font-weight: 700;
+    max-width: 18ch;
+    color: white;
+    position: relative;
+  }
+  .final-card p {
+    color: rgba(255,255,255,0.86);
+    font-size: 17px;
+    line-height: 1.5;
+    max-width: 56ch;
+    margin: 0 auto 32px;
+    position: relative;
+  }
+  .final-card .hero-ctas { position: relative; }
+  .final-card .btn-primary {
+    background: white;
+    color: var(--blue);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  }
+  .final-card .btn-primary:hover { background: #F2F2F7; }
+  .final-card .btn-ghost {
+    background: rgba(255,255,255,0.18);
+    color: white;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+  .final-card .btn-ghost:hover { background: rgba(255,255,255,0.28); }
+
+  /* ───────── Footer ───────── */
+  footer {
+    padding: 48px 0 36px;
+    border-top: 0.5px solid var(--separator);
+    margin-top: 24px;
+  }
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 32px;
+    padding-bottom: 32px;
+  }
+  @media (max-width: 720px) { .foot-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .foot-grid { grid-template-columns: 1fr; } }
+  .foot-brand p {
+    color: var(--label-3);
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 14px 0 0;
+    max-width: 38ch;
+  }
+  .foot-col h4 {
+    font-size: 13px;
+    color: var(--label-3);
+    margin: 0 0 14px;
+    font-weight: 600;
+  }
+  .foot-col ul {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .foot-col a { font-size: 14px; color: var(--label-2); }
+  .foot-col a:hover { color: var(--blue); }
+  .foot-bottom {
+    padding-top: 24px;
+    border-top: 0.5px solid var(--separator);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+    font-size: 13px;
+    color: var(--label-3);
+  }
+  .socials { display: flex; gap: 8px; }
+  .social {
+    width: 34px; height: 34px;
+    border-radius: 10px;
+    background: var(--fill-1);
+    display: grid; place-items: center;
+    color: var(--label-2);
+    transition: background .15s, color .15s;
+  }
+  .social:hover { background: var(--blue); color: white; }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(10px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand" aria-label="Vértice">
+      <span class="brand-mark" aria-hidden="true">V</span>
+      <span>Vértice</span>
+    </a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#diferencia">Por qué</a>
+      <a href="#clientes">Clientes</a>
+    </nav>
+    <a href="#contacto" class="nav-cta">Agendar</a>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="wrap">
+    <div class="pill reveal" role="status">
+      <span class="dot" aria-hidden="true"></span>
+      <span>Aceptando proyectos · Q3 2026</span>
+    </div>
+    <h1 class="headline reveal">
+      Software a medida.<br/>
+      <span class="grad">Para pymes que crecen.</span>
+    </h1>
+    <p class="deck reveal">
+      Construimos sistemas, automatizamos procesos y conectamos lo que ya tenés. Trabajamos con equipos que necesitan tecnología confiable — sin agencias intermedias, sin discovery de seis meses.
+    </p>
+    <div class="hero-ctas reveal">
+      <a href="#contacto" class="btn btn-primary">Agendar consulta gratuita
+        <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
+    </div>
+
+    <div class="hero-meta reveal">
+      <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Respuesta &lt; 24h</span>
+      <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Sin compromiso</span>
+      <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> BUE / BOG / Remoto</span>
+    </div>
+
+    <!-- Device mockup -->
+    <div class="device-stage reveal" aria-hidden="true">
+      <div class="float-card float-1">
+        <div class="ico icon-green"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div>
+          <div style="font-weight:600;letter-spacing:-0.01em;">Sync completo</div>
+          <div style="color:var(--label-3); font-size:11.5px;">hace 2 min</div>
+        </div>
+      </div>
+      <div class="float-card float-2">
+        <div class="ico icon-blue"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div>
+          <div style="font-weight:600;letter-spacing:-0.01em;">+24% velocidad</div>
+          <div style="color:var(--label-3); font-size:11.5px;">vs. mes anterior</div>
+        </div>
+      </div>
+      <div class="float-card float-3">
+        <div class="ico icon-orange"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <div>
+          <div style="font-weight:600;letter-spacing:-0.01em;">98% retención</div>
+          <div style="color:var(--label-3); font-size:11.5px;">Clientes 2025</div>
+        </div>
+      </div>
+
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="phone-status">
+            <span>9:41</span>
+            <span class="right">
+              <svg width="14" height="10" viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="6" width="3" height="6" rx="0.5"/><rect x="5" y="3" width="3" height="9" rx="0.5"/><rect x="10" y="0" width="3" height="12" rx="0.5"/></svg>
+              <svg width="14" height="10" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="20" height="10" rx="2.5"/><rect x="3" y="5" width="14" height="6" rx="1" fill="currentColor"/></svg>
+            </span>
+          </div>
+          <div class="phone-notch"></div>
+          <div class="phone-app">
+            <div class="phone-greet">Resumen · Hoy</div>
+            <div class="phone-title">Operaciones</div>
+
+            <div class="phone-card">
+              <div class="phone-card-icon icon-blue"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg></div>
+              <div class="phone-card-text">
+                <div class="phone-card-title">Ventas</div>
+                <div class="phone-card-sub">142 órdenes hoy</div>
+              </div>
+              <div class="phone-card-val up">+12%</div>
+            </div>
+            <div class="phone-card">
+              <div class="phone-card-icon icon-purple"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+              <div class="phone-card-text">
+                <div class="phone-card-title">Tareas</div>
+                <div class="phone-card-sub">8 pendientes</div>
+              </div>
+              <div class="phone-card-val">8</div>
+            </div>
+            <div class="phone-card">
+              <div class="phone-card-icon icon-orange"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+              <div class="phone-card-text">
+                <div class="phone-card-title">Mensajes</div>
+                <div class="phone-card-sub">3 sin leer</div>
+              </div>
+              <div class="phone-card-val">3</div>
+            </div>
+            <div class="phone-card">
+              <div class="phone-card-icon icon-green"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="phone-card-text">
+                <div class="phone-card-title">Sync ERP</div>
+                <div class="phone-card-sub">Última: 14:32</div>
+              </div>
+              <div class="phone-card-val up">OK</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="block">
+  <div class="wrap">
+    <div class="stats reveal">
+      <div class="stat">
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Proyectos</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Clientes activos</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Años</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Retención</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="block" id="servicios">
+  <div class="wrap">
+    <div class="section-eyebrow reveal">Servicios</div>
+    <h2 class="section-title reveal">Lo que <span class="grad">construimos</span></h2>
+    <p class="section-sub reveal">Resolvemos problemas concretos: el ERP que no integra, el reporte que toma 3 días, la app que tus clientes piden hace meses.</p>
+
+    <div class="services">
+      <article class="service reveal">
+        <div class="service-icon icon-blue"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <h3>Software a medida</h3>
+        <p>Sistemas internos, paneles y herramientas que se adaptan a tu operación, no al revés.</p>
+        <div class="service-tags"><span class="service-tag">Node</span><span class="service-tag">Postgres</span><span class="service-tag">React</span></div>
+      </article>
+
+      <article class="service reveal">
+        <div class="service-icon icon-indigo"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <h3>Aplicaciones web</h3>
+        <p>Plataformas rápidas, accesibles y mantenibles sobre arquitecturas que no se rompen.</p>
+        <div class="service-tags"><span class="service-tag">Next.js</span><span class="service-tag">TypeScript</span></div>
+      </article>
+
+      <article class="service reveal">
+        <div class="service-icon icon-teal"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><line x1="12" y1="18" x2="12" y2="18"/></svg></div>
+        <h3>Apps móviles</h3>
+        <p>iOS y Android desde una sola base de código. Para flotas, ventas en campo, atención al cliente.</p>
+        <div class="service-tags"><span class="service-tag">React Native</span><span class="service-tag">Expo</span></div>
+      </article>
+
+      <article class="service reveal">
+        <div class="service-icon icon-orange"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
+        <h3>Automatización</h3>
+        <p>Reportes que se generan solos, datos que pasan entre sistemas, tareas manuales que dejan de existir.</p>
+        <div class="service-tags"><span class="service-tag">n8n</span><span class="service-tag">APIs</span></div>
+      </article>
+
+      <article class="service reveal">
+        <div class="service-icon icon-pink"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+        <h3>Integraciones</h3>
+        <p>Conectamos CRM, contabilidad, e-commerce y bodega. Una sola fuente de verdad.</p>
+        <div class="service-tags"><span class="service-tag">REST</span><span class="service-tag">Webhooks</span></div>
+      </article>
+
+      <article class="service reveal">
+        <div class="service-icon icon-purple"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3>Consultoría &amp; soporte</h3>
+        <p>Diagnóstico, arquitectura y soporte continuo. Como si fuéramos tu equipo interno.</p>
+        <div class="service-tags"><span class="service-tag">Mensual</span><span class="service-tag">Por hora</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section class="block" id="proceso">
+  <div class="wrap">
+    <div class="section-eyebrow reveal">Proceso</div>
+    <h2 class="section-title reveal">Tres pasos. <span class="grad">Sin sorpresas.</span></h2>
+    <p class="section-sub reveal">Sprints cortos, demos en vivo, todo documentado para que puedas seguir tú o cualquier otro equipo.</p>
+
+    <div class="process reveal">
+      <div class="step">
+        <div class="step-num s1">1</div>
+        <div class="step-body">
+          <h3>Diagnosticamos</h3>
+          <p>Reunión inicial sin costo. Mapeamos procesos, dolores y oportunidades. Te entregamos un plan accionable en una semana — incluso si decidimos no trabajar juntos.</p>
+        </div>
+        <div class="step-meta">
+          <span>5–7 días</span>
+          <b>Sin cargo</b>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num s2">2</div>
+        <div class="step-body">
+          <h3>Construimos</h3>
+          <p>Sprints de dos semanas con demos en vivo. Acceso al código, al tablero y al canal de Slack desde el día uno. Si algo se desvía, lo corregimos en el siguiente sprint.</p>
+        </div>
+        <div class="step-meta">
+          <span>Cadencia</span>
+          <b>2 semanas</b>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num s3">3</div>
+        <div class="step-body">
+          <h3>Escalamos</h3>
+          <p>Soporte continuo, monitoreo y mejoras. Mes a mes, sin lock-in. Te quedás porque agregamos valor — no porque firmaste un contrato a tres años.</p>
+        </div>
+        <div class="step-meta">
+          <span>Compromiso</span>
+          <b>Mensual</b>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why -->
+<section class="block" id="diferencia">
+  <div class="wrap">
+    <div class="section-eyebrow reveal">Por qué</div>
+    <h2 class="section-title reveal">No somos una <span class="grad">agencia</span></h2>
+    <p class="section-sub reveal">Equipo enfocado que toma proyectos donde puede generar impacto real — y dice "no" cuando no es el caso.</p>
+
+    <div class="why-grid">
+      <div class="why reveal">
+        <div class="why-icon icon-blue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <div>
+          <h3>Entregas rápidas</h3>
+          <p>Primer entregable en producción en 4–6 semanas. Sin demos vacías ni "fases de descubrimiento" que duran meses.</p>
+        </div>
+      </div>
+      <div class="why reveal">
+        <div class="why-icon icon-pink"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div>
+          <h3>Comunicación directa</h3>
+          <p>Hablás con quien programa, no con un account manager. Slack, WhatsApp o el canal que prefieras.</p>
+        </div>
+      </div>
+      <div class="why reveal">
+        <div class="why-icon icon-green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div>
+          <h3>Soporte local</h3>
+          <p>Mismo huso horario, mismo idioma, contexto LATAM. Entendemos impuestos, bancos e integraciones regionales.</p>
+        </div>
+      </div>
+      <div class="why reveal">
+        <div class="why-icon icon-purple"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div>
+          <h3>Soluciones que escalan</h3>
+          <p>Código mantenible por cualquier equipo. Sin lock-in, sin "magia", documentado de principio a fin.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="block" id="clientes">
+  <div class="wrap">
+    <div class="section-eyebrow reveal">Clientes</div>
+    <h2 class="section-title reveal">Lo que <span class="grad">dicen</span></h2>
+    <p class="section-sub reveal">Distintos rubros, presupuestos y tamaños. Las opiniones, alineadas.</p>
+
+    <div class="quotes">
+      <article class="quote reveal">
+        <div class="quote-stars">★ ★ ★ ★ ★</div>
+        <p class="quote-text">Tenemos un sistema que antes nos tomaba 3 días al mes y ahora corre solo. La inversión se pagó en el segundo mes.</p>
+        <div class="quote-author">
+          <div class="avatar av1">MR</div>
+          <div>
+            <div class="who">Mariana Rivas</div>
+            <div class="where">COO · Logística Andina</div>
+          </div>
+        </div>
+      </article>
+      <article class="quote reveal">
+        <div class="quote-stars">★ ★ ★ ★ ★</div>
+        <p class="quote-text">Lo que más valoramos es la honestidad. Si algo no vale la pena hacerlo, lo dicen. Eso en consultoría no abunda.</p>
+        <div class="quote-author">
+          <div class="avatar av2">JC</div>
+          <div>
+            <div class="who">Julián Cárdenas</div>
+            <div class="where">CTO · Pago Fácil</div>
+          </div>
+        </div>
+      </article>
+      <article class="quote reveal">
+        <div class="quote-stars">★ ★ ★ ★ ★</div>
+        <p class="quote-text">Migramos de un ERP que era un dolor de cabeza a un sistema propio en 8 semanas. Sin caídas, sin drama.</p>
+        <div class="quote-author">
+          <div class="avatar av3">SP</div>
+          <div>
+            <div class="who">Sofía Parra</div>
+            <div class="where">Distribuidora Norte</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="final" id="contacto">
+  <div class="wrap">
+    <div class="final-card reveal">
+      <div class="pill"><span class="dot"></span><span>Disponible esta semana</span></div>
+      <h2>Conversemos<br/>treinta minutos.</h2>
+      <p>Te mostramos qué se puede automatizar, qué construir y qué no vale la pena tocar todavía. Si te sirve, seguimos. Si no, te quedaste con un plan claro.</p>
+      <div class="hero-ctas">
+        <a href="mailto:hola@vertice.lat?subject=Consulta%20gratuita" class="btn btn-primary">Agendar consulta gratuita
+          <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="mailto:hola@vertice.lat" class="btn btn-ghost">hola@vertice.lat</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#top" class="brand">
+          <span class="brand-mark" aria-hidden="true">V</span>
+          <span>Vértice</span>
+        </a>
+        <p>Soluciones informáticas para empresas que crecen en Latinoamérica. Buenos Aires · Bogotá · Remoto.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Producto</h4>
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#proceso">Proceso</a></li>
+          <li><a href="#diferencia">Por qué</a></li>
+          <li><a href="#clientes">Clientes</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#">Sobre nosotros</a></li>
+          <li><a href="#">Trabaja con nosotros</a></li>
+          <li><a href="#">Notas técnicas</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:hola@vertice.lat">hola@vertice.lat</a></li>
+          <li><a href="tel:+5491100000000">+54 9 11 0000-0000</a></li>
+          <li><a href="#">BUE · BOG</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Vértice</span>
+      <div class="socials" aria-label="Redes sociales">
+        <a class="social" href="#" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8h4.56v14H.22V8zm7.6 0h4.37v1.92h.06c.61-1.15 2.1-2.36 4.32-2.36 4.62 0 5.47 3.04 5.47 7v7.44h-4.56v-6.6c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.49V22H7.82V8z"/></svg></a>
+        <a class="social" href="#" aria-label="GitHub"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.79 23.4c.6.1.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.72-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.09-.74.09-.73.09-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.31-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.87.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22 0 1.6-.01 2.89-.01 3.29 0 .32.21.7.83.58A12 12 0 0 0 12 .3"/></svg></a>
+        <a class="social" href="#" aria-label="Twitter"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21l-6.518 7.45L22 22h-6.39l-5-6.54L4.8 22H2.04l6.97-7.97L2 2h6.55l4.52 5.97L18.244 2zm-1.12 18h1.83L7.04 4H5.08l12.044 16z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = (Math.min(i % 6, 5) * 70) + 'ms';
+    io.observe(el);
+  });
+
+  // Smooth-scroll
+  const NAV_OFFSET = 70;
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href').slice(1);
+      if (!id) return;
+      const t = document.getElementById(id);
+      if (!t) return;
+      e.preventDefault();
+      const y = t.getBoundingClientRect().top + window.pageYOffset - NAV_OFFSET;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>

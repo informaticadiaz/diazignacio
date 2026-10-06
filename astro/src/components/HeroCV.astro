@@ -1,0 +1,184 @@
+---
+---
+
+<section class="hero">
+	<div class="glow-container">
+		<div class="glow"></div>
+	</div>
+	<div class="container">
+		<h1 class="animate-fade-in-up">Ignacio Diaz</h1>
+		<p class="subtitle animate-fade-in-up stagger-1">Front-end Developer & Self-taught Web Developer</p>
+		<p class="description animate-fade-in-up stagger-2">
+			Passionate about building beautiful, functional web experiences. Currently exploring CTFs and Web Development. Based in Argentina.
+		</p>
+		<div class="cta">
+			<a href="https://github.com/informaticadiaz" class="btn btn-primary animate-fade-in-up stagger-3">GitHub</a>
+			<a href="mailto:informatica.diaz@gmail.com" class="btn btn-secondary animate-fade-in-up stagger-4">Contact</a>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hero {
+		min-height: 60vh;
+		display: flex;
+		align-items: center;
+		padding: 4rem 2rem;
+		background: linear-gradient(135deg, rgba(136, 58, 234, 0.08) 0%, rgba(49, 10, 101, 0.03) 100%);
+		border-bottom: 1px solid rgba(136, 58, 234, 0.2);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.glow-container {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		pointer-events: none;
+		overflow: hidden;
+	}
+
+	.glow {
+		position: absolute;
+		width: 500px;
+		height: 500px;
+		background: radial-gradient(circle, rgba(136, 58, 234, 0.15) 0%, transparent 70%);
+		border-radius: 50%;
+		top: -200px;
+		right: -200px;
+		filter: blur(50px);
+		animation: floatSlow 8s ease-in-out infinite;
+	}
+
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		width: 100%;
+		position: relative;
+		z-index: 1;
+	}
+
+	h1 {
+		font-size: clamp(2.5rem, 8vw, 4rem);
+		margin: 0 0 1rem 0;
+		background: linear-gradient(135deg, rgb(224, 204, 250) 0%, rgb(200, 170, 255) 50%, white 100%);
+		background-size: 300% 300%;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		font-weight: 700;
+		animation: gradientShift 4s ease infinite;
+	}
+
+	.subtitle {
+		font-size: 1.5rem;
+		color: rgb(136, 58, 234);
+		margin: 0 0 1rem 0;
+		font-weight: 600;
+		position: relative;
+		display: inline-block;
+	}
+
+	.subtitle::after {
+		content: '';
+		position: absolute;
+		bottom: -5px;
+		left: 0;
+		width: 0;
+		height: 3px;
+		background: linear-gradient(90deg, rgb(136, 58, 234), transparent);
+		animation: slideRight 0.8s ease-out 0.3s forwards;
+	}
+
+	@keyframes slideRight {
+		to {
+			width: 100%;
+		}
+	}
+
+	.description {
+		font-size: 1.1rem;
+		color: #a0a0a0;
+		line-height: 1.6;
+		max-width: 600px;
+		margin: 0 0 2rem 0;
+	}
+
+	.cta {
+		display: flex;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+
+	.btn {
+		padding: 0.75rem 1.5rem;
+		border-radius: 12px;
+		text-decoration: none;
+		font-weight: 600;
+		border: 2px solid;
+		cursor: pointer;
+		display: inline-block;
+		position: relative;
+		overflow: hidden;
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.btn::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: -100%;
+		width: 100%;
+		height: 100%;
+		background: rgba(255, 255, 255, 0.1);
+		transition: left 0.5s ease;
+		z-index: -1;
+	}
+
+	.btn:hover::before {
+		left: 100%;
+	}
+
+	.btn-primary {
+		background: linear-gradient(135deg, rgb(136, 58, 234) 0%, rgb(200, 170, 255) 100%);
+		color: white;
+		border-color: rgb(136, 58, 234);
+		box-shadow: 0 4px 15px rgba(136, 58, 234, 0.2);
+	}
+
+	.btn-primary:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 12px 30px rgba(136, 58, 234, 0.4);
+	}
+
+	.btn-secondary {
+		background: transparent;
+		color: rgb(224, 204, 250);
+		border-color: rgba(136, 58, 234, 0.5);
+	}
+
+	.btn-secondary:hover {
+		background: rgba(136, 58, 234, 0.15);
+		border-color: rgb(136, 58, 234);
+		transform: translateY(-4px);
+		box-shadow: 0 12px 30px rgba(136, 58, 234, 0.25);
+	}
+
+	@media (max-width: 768px) {
+		.hero {
+			min-height: 50vh;
+			padding: 3rem 1rem;
+		}
+
+		.cta {
+			flex-direction: column;
+		}
+
+		.btn {
+			width: 100%;
+			text-align: center;
+		}
+	}
+</style>

@@ -1,0 +1,252 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+
+const blogPosts = [
+	{
+		id: 'getting-started-with-astro',
+		title: 'Getting Started with Astro',
+		excerpt: 'Discover why Astro is revolutionizing web development with its island architecture and zero-JavaScript by default approach.',
+		date: 'May 21, 2024',
+		readTime: '5 min read',
+		category: 'Tutorial',
+	},
+	{
+		id: 'react-hooks-guide',
+		title: 'Understanding React Hooks: A Comprehensive Guide',
+		excerpt: 'Learn about useState, useEffect, and custom hooks. Master the fundamentals of modern React development.',
+		date: 'May 15, 2024',
+		readTime: '8 min read',
+		category: 'React',
+	},
+	{
+		id: 'tailwind-css-tips',
+		title: 'Tailwind CSS Tips & Tricks',
+		excerpt: 'Optimize your workflow with advanced Tailwind CSS techniques and utility-first design patterns.',
+		date: 'May 10, 2024',
+		readTime: '6 min read',
+		category: 'CSS',
+	},
+	{
+		id: 'web-security-basics',
+		title: 'Web Security Basics for Developers',
+		excerpt: 'Understanding XSS, CSRF, and other common vulnerabilities. Build secure web applications from the ground up.',
+		date: 'May 5, 2024',
+		readTime: '7 min read',
+		category: 'Security',
+	},
+	{
+		id: 'typescript-advanced',
+		title: 'Advanced TypeScript Patterns',
+		excerpt: 'Explore generics, types, and interfaces. Write more robust and maintainable code with TypeScript.',
+		date: 'April 28, 2024',
+		readTime: '9 min read',
+		category: 'TypeScript',
+	},
+];
+---
+
+<Layout title="Blog - Ignacio Diaz">
+	<Header />
+
+	<section class="blog-hero">
+		<div class="container">
+			<h1>Blog</h1>
+			<p>Thoughts on web development, programming, and technology</p>
+		</div>
+	</section>
+
+	<section class="blog-posts">
+		<div class="container">
+			<div class="posts-grid">
+				{blogPosts.map(post => (
+					<article class="blog-card">
+						<div class="category-badge">{post.category}</div>
+						<h2>
+							<a href={`/blog/${post.id}`}>{post.title}</a>
+						</h2>
+						<p class="excerpt">{post.excerpt}</p>
+						<div class="post-meta">
+							<span class="date">{post.date}</span>
+							<span class="separator">•</span>
+							<span class="read-time">{post.readTime}</span>
+						</div>
+						<a href={`/blog/${post.id}`} class="read-more">Read More →</a>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.blog-hero {
+		padding: 4rem 2rem;
+		background: linear-gradient(135deg, rgba(136, 58, 234, 0.1) 0%, rgba(49, 10, 101, 0.05) 100%);
+		border-bottom: 1px solid rgba(136, 58, 234, 0.2);
+	}
+
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.blog-hero h1 {
+		font-size: 3rem;
+		margin: 0 0 1rem 0;
+		background: linear-gradient(45deg, rgb(224, 204, 250), white);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.blog-hero p {
+		font-size: 1.1rem;
+		color: #a0a0a0;
+		margin: 0;
+	}
+
+	.blog-posts {
+		padding: 4rem 2rem;
+	}
+
+	.posts-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+		gap: 2rem;
+	}
+
+	.blog-card {
+		background: linear-gradient(135deg, rgba(136, 58, 234, 0.1) 0%, rgba(49, 10, 101, 0.05) 100%);
+		border: 1px solid rgba(136, 58, 234, 0.2);
+		border-radius: 12px;
+		padding: 2rem;
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		animation: fadeInUp 0.6s ease-out forwards;
+		opacity: 0;
+		overflow: hidden;
+	}
+
+	.blog-card::before {
+		content: '';
+		position: absolute;
+		top: -100%;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(135deg, transparent 0%, rgba(136, 58, 234, 0.1) 50%, transparent 100%);
+		transition: top 0.6s ease;
+	}
+
+	.blog-card:nth-child(1) {
+		animation-delay: 0.1s;
+	}
+
+	.blog-card:nth-child(2) {
+		animation-delay: 0.2s;
+	}
+
+	.blog-card:nth-child(3) {
+		animation-delay: 0.3s;
+	}
+
+	.blog-card:nth-child(4) {
+		animation-delay: 0.4s;
+	}
+
+	.blog-card:nth-child(5) {
+		animation-delay: 0.5s;
+	}
+
+	.blog-card:hover::before {
+		top: 100%;
+	}
+
+	.blog-card:hover {
+		border-color: rgba(136, 58, 234, 0.6);
+		background: linear-gradient(135deg, rgba(136, 58, 234, 0.2) 0%, rgba(49, 10, 101, 0.15) 100%);
+		transform: translateY(-12px);
+		box-shadow: 0 30px 60px rgba(136, 58, 234, 0.3);
+	}
+
+	.category-badge {
+		display: inline-block;
+		background: rgba(136, 58, 234, 0.3);
+		color: rgb(136, 58, 234);
+		padding: 0.4rem 0.8rem;
+		border-radius: 16px;
+		font-size: 0.8rem;
+		font-weight: 600;
+		width: fit-content;
+		margin-bottom: 1rem;
+	}
+
+	h2 {
+		margin: 0 0 1rem 0;
+	}
+
+	h2 a {
+		color: rgb(224, 204, 250);
+		text-decoration: none;
+		font-size: 1.4rem;
+		transition: color 0.2s ease;
+	}
+
+	h2 a:hover {
+		color: rgb(136, 58, 234);
+	}
+
+	.excerpt {
+		color: #a0a0a0;
+		line-height: 1.6;
+		margin: 0 0 1.5rem 0;
+		flex-grow: 1;
+	}
+
+	.post-meta {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: #808080;
+		font-size: 0.9rem;
+		margin-bottom: 1rem;
+	}
+
+	.separator {
+		color: #606060;
+	}
+
+	.read-more {
+		color: rgb(136, 58, 234);
+		text-decoration: none;
+		font-weight: 600;
+		transition: all 0.2s ease;
+		display: inline-block;
+	}
+
+	.read-more:hover {
+		color: rgb(224, 204, 250);
+		transform: translateX(4px);
+	}
+
+	@media (max-width: 768px) {
+		.blog-hero {
+			padding: 2rem 1rem;
+		}
+
+		.blog-hero h1 {
+			font-size: 2rem;
+		}
+
+		.blog-posts {
+			padding: 2rem 1rem;
+		}
+
+		.posts-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

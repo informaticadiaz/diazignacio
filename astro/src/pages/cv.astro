@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import HeroCV from '../components/HeroCV.astro';
+import Skills from '../components/Skills.astro';
+import Projects from '../components/Projects.astro';
+---
+
+<Layout title="Ignacio Diaz - CV">
+	<Header />
+	<HeroCV />
+	<Skills />
+	<Projects />
+
+	<section class="about">
+		<div class="container">
+			<h2>About Me</h2>
+			<p>
+				I'm a self-taught front-end developer from Argentina with a passion for building beautiful, functional web experiences.
+				I'm constantly learning and exploring new technologies, from React and Next.js to Astro and modern CSS techniques.
+			</p>
+			<p>
+				When I'm not coding, I enjoy playing CTFs (Capture The Flag) challenges, which has deepened my understanding of web security
+				and problem-solving. I believe in continuous learning and staying updated with the latest trends in web development.
+			</p>
+			<p>
+				I'm open to collaborations, freelance projects, and opportunities to work with passionate teams. Let's build something amazing together!
+			</p>
+		</div>
+	</section>
+
+	<footer>
+		<div class="container">
+			<p>&copy; 2024 Ignacio Diaz. All rights reserved.</p>
+			<div class="social-links">
+				<a href="https://github.com/informaticadiaz" target="_blank">GitHub</a>
+				<a href="mailto:informatica.diaz@gmail.com">Email</a>
+			</div>
+		</div>
+	</footer>
+</Layout>
+
+<style>
+	.about {
+		padding: 4rem 2rem;
+		background: rgba(136, 58, 234, 0.05);
+		border-bottom: 1px solid rgba(136, 58, 234, 0.2);
+	}
+
+	.container {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+
+	h2 {
+		font-size: 2.5rem;
+		margin-bottom: 2rem;
+		color: rgb(224, 204, 250);
+		text-align: center;
+	}
+
+	p {
+		color: #a0a0a0;
+		line-height: 1.8;
+		font-size: 1.05rem;
+		margin-bottom: 1.5rem;
+	}
+
+	footer {
+		background: rgba(19, 21, 26, 0.5);
+		border-top: 1px solid rgba(136, 58, 234, 0.2);
+		padding: 3rem 2rem;
+		text-align: center;
+	}
+
+	footer p {
+		margin-bottom: 1rem;
+		color: #808080;
+	}
+
+	.social-links {
+		display: flex;
+		justify-content: center;
+		gap: 2rem;
+		flex-wrap: wrap;
+	}
+
+	.social-links a {
+		color: rgb(224, 204, 250);
+		text-decoration: none;
+		transition: color 0.3s ease;
+	}
+
+	.social-links a:hover {
+		color: rgb(136, 58, 234);
+	}
+
+	@media (max-width: 768px) {
+		.about {
+			padding: 2rem 1rem;
+		}
+
+		h2 {
+			font-size: 2rem;
+		}
+
+		p {
+			font-size: 1rem;
+		}
+	}
+</style>

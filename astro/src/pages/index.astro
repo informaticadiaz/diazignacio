@@ -1,0 +1,439 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+---
+
+<Layout title="Ignacio Diaz - Web Developer">
+	<Header />
+
+	<main>
+		<section class="hero">
+			<div class="container">
+				<div class="hero-content">
+					<h1>Hey, I'm <span class="gradient">Ignacio</span></h1>
+					<p class="subtitle">Front-end developer passionate about building beautiful web experiences</p>
+					<div class="cta-buttons">
+						<a href="/cv" class="btn btn-primary">View My CV</a>
+						<a href="/blog" class="btn btn-secondary">Read My Blog</a>
+						<a href="https://github.com/informaticadiaz" target="_blank" class="btn btn-secondary">GitHub</a>
+					</div>
+				</div>
+
+				<div class="hero-visual">
+					<div class="glow-orb"></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="highlights">
+			<div class="container">
+				<div class="highlight-card">
+					<div class="icon">💻</div>
+					<h3>Front-end Development</h3>
+					<p>Specializing in React, Next.js, and Astro. Building fast, responsive, and accessible web applications.</p>
+				</div>
+
+				<div class="highlight-card">
+					<div class="icon">🎨</div>
+					<h3>Design & UX</h3>
+					<p>Crafting beautiful user interfaces with Tailwind CSS and modern design principles. Always focusing on user experience.</p>
+				</div>
+
+				<div class="highlight-card">
+					<div class="icon">🔒</div>
+					<h3>Web Security</h3>
+					<p>Understanding security vulnerabilities and building secure applications. Passionate about CTF challenges.</p>
+				</div>
+
+				<div class="highlight-card">
+					<div class="icon">📚</div>
+					<h3>Continuous Learning</h3>
+					<p>Always exploring new technologies and sharing knowledge. TypeScript, Web APIs, and modern tooling.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="cta-section">
+			<div class="container">
+				<h2>Let's Work Together</h2>
+				<p>Whether you're looking for a developer for a project or just want to discuss web development, feel free to reach out.</p>
+				<a href="mailto:informatica.diaz@gmail.com" class="btn btn-primary">Get in Touch</a>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<div class="container">
+			<p>&copy; 2024 Ignacio Diaz. Built with Astro.</p>
+			<div class="social">
+				<a href="https://github.com/informaticadiaz" target="_blank">GitHub</a>
+				<a href="mailto:informatica.diaz@gmail.com">Email</a>
+			</div>
+		</div>
+	</footer>
+</Layout>
+
+<style>
+	main {
+		flex: 1;
+	}
+
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+
+	.hero {
+		min-height: 80vh;
+		display: flex;
+		align-items: center;
+		padding: 4rem 2rem;
+		background: linear-gradient(135deg, rgba(136, 58, 234, 0.1) 0%, rgba(49, 10, 101, 0.05) 100%);
+		border-bottom: 1px solid rgba(136, 58, 234, 0.2);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.hero .container {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		align-items: center;
+		gap: 4rem;
+		width: 100%;
+	}
+
+	.hero-content h1 {
+		font-size: clamp(2.5rem, 8vw, 4rem);
+		margin: 0 0 1rem 0;
+		font-weight: 700;
+		color: white;
+		line-height: 1.2;
+		animation: fadeInLeft 0.8s ease-out;
+	}
+
+	.gradient {
+		background: linear-gradient(135deg, rgb(136, 58, 234) 0%, rgb(224, 204, 250) 50%, rgb(136, 58, 234) 100%);
+		background-size: 300% 300%;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		animation: gradientShift 4s ease infinite;
+	}
+
+	.subtitle {
+		font-size: 1.3rem;
+		color: #a0a0a0;
+		margin: 0 0 2rem 0;
+		line-height: 1.6;
+		animation: fadeInLeft 0.8s ease-out 0.1s backwards;
+	}
+
+	.cta-buttons {
+		display: flex;
+		gap: 1rem;
+		flex-wrap: wrap;
+		animation: fadeInUp 0.8s ease-out 0.2s backwards;
+	}
+
+	.btn {
+		padding: 0.75rem 1.5rem;
+		border-radius: 12px;
+		text-decoration: none;
+		font-weight: 600;
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		border: 2px solid;
+		cursor: pointer;
+		display: inline-block;
+		text-align: center;
+		font-size: 1rem;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.btn::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: -100%;
+		width: 100%;
+		height: 100%;
+		background: rgba(255, 255, 255, 0.1);
+		transition: left 0.5s ease;
+		z-index: 0;
+	}
+
+	.btn:hover::before {
+		left: 100%;
+	}
+
+	.btn-primary {
+		background: linear-gradient(135deg, rgb(136, 58, 234) 0%, rgb(200, 170, 255) 100%);
+		color: white;
+		border-color: rgb(136, 58, 234);
+		box-shadow: 0 4px 15px rgba(136, 58, 234, 0.2);
+	}
+
+	.btn-primary:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 15px 40px rgba(136, 58, 234, 0.5);
+	}
+
+	.btn-secondary {
+		background: transparent;
+		color: rgb(224, 204, 250);
+		border-color: rgba(136, 58, 234, 0.6);
+	}
+
+	.btn-secondary:hover {
+		background: rgba(136, 58, 234, 0.15);
+		border-color: rgb(136, 58, 234);
+		transform: translateY(-4px);
+		box-shadow: 0 15px 30px rgba(136, 58, 234, 0.3);
+	}
+
+	.hero-visual {
+		position: relative;
+		height: 400px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.glow-orb {
+		width: 300px;
+		height: 300px;
+		background: radial-gradient(circle at 30% 30%, rgba(136, 58, 234, 0.4) 0%, rgba(136, 58, 234, 0.2) 40%, transparent 70%);
+		border-radius: 50%;
+		filter: blur(40px);
+		animation: float 8s ease-in-out infinite, glow 4s ease-in-out infinite;
+		box-shadow: 0 0 80px rgba(136, 58, 234, 0.3);
+	}
+
+	@keyframes float {
+		0%, 100% {
+			transform: translateY(0px);
+		}
+		50% {
+			transform: translateY(-20px);
+		}
+	}
+
+	.highlights {
+		padding: 4rem 2rem;
+		background: rgba(136, 58, 234, 0.03);
+	}
+
+	.highlights .container {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 2rem;
+	}
+
+	.highlight-card {
+		padding: 2rem;
+		background: rgba(19, 21, 26, 0.5);
+		border: 1px solid rgba(136, 58, 234, 0.2);
+		border-radius: 12px;
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		text-align: center;
+		animation: fadeInUp 0.6s ease-out forwards;
+		opacity: 0;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.highlight-card::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: -100%;
+		width: 100%;
+		height: 100%;
+		background: radial-gradient(circle at center, rgba(136, 58, 234, 0.2), transparent);
+		transition: left 0.6s ease;
+		z-index: 0;
+	}
+
+	.highlight-card:hover::before {
+		left: 100%;
+	}
+
+	.highlight-card:nth-child(1) {
+		animation-delay: 0.2s;
+	}
+
+	.highlight-card:nth-child(2) {
+		animation-delay: 0.3s;
+	}
+
+	.highlight-card:nth-child(3) {
+		animation-delay: 0.4s;
+	}
+
+	.highlight-card:nth-child(4) {
+		animation-delay: 0.5s;
+	}
+
+	.highlight-card:hover {
+		border-color: rgba(136, 58, 234, 0.6);
+		background: rgba(136, 58, 234, 0.15);
+		transform: translateY(-12px);
+		box-shadow: 0 20px 40px rgba(136, 58, 234, 0.25);
+	}
+
+	.icon {
+		font-size: 2.5rem;
+		margin-bottom: 1rem;
+		transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		display: inline-block;
+		animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+		animation-delay: var(--delay, 0s);
+	}
+
+	.highlight-card:hover .icon {
+		transform: scale(1.2) rotate(10deg);
+	}
+
+	.highlight-card h3 {
+		color: rgb(224, 204, 250);
+		margin-bottom: 0.75rem;
+		position: relative;
+		z-index: 1;
+	}
+
+	.highlight-card p {
+		color: #a0a0a0;
+		font-size: 0.95rem;
+		line-height: 1.6;
+		position: relative;
+		z-index: 1;
+	}
+
+	.cta-section {
+		padding: 4rem 2rem;
+		background: linear-gradient(135deg, rgba(136, 58, 234, 0.1) 0%, rgba(49, 10, 101, 0.05) 100%);
+		border-top: 1px solid rgba(136, 58, 234, 0.2);
+		text-align: center;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.cta-section::before {
+		content: '';
+		position: absolute;
+		top: -50%;
+		right: -50%;
+		width: 200%;
+		height: 200%;
+		background: radial-gradient(circle, rgba(136, 58, 234, 0.1) 0%, transparent 70%);
+		animation: rotate 15s linear infinite;
+		pointer-events: none;
+	}
+
+	@keyframes rotate {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	.cta-section .container {
+		max-width: 600px;
+		position: relative;
+		z-index: 1;
+	}
+
+	.cta-section h2 {
+		font-size: 2rem;
+		margin-bottom: 1rem;
+		color: rgb(224, 204, 250);
+		animation: fadeInUp 0.8s ease-out;
+		background: linear-gradient(135deg, rgb(224, 204, 250) 0%, rgb(200, 170, 255) 100%);
+		background-size: 200% 200%;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.cta-section p {
+		color: #a0a0a0;
+		margin-bottom: 2rem;
+		font-size: 1.1rem;
+		animation: fadeInUp 0.8s ease-out 0.1s backwards;
+	}
+
+	footer {
+		background: rgba(19, 21, 26, 0.8);
+		border-top: 1px solid rgba(136, 58, 234, 0.2);
+		padding: 2rem;
+		text-align: center;
+		color: #808080;
+	}
+
+	footer .container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+
+	.social {
+		display: flex;
+		gap: 2rem;
+	}
+
+	.social a {
+		color: rgb(224, 204, 250);
+		text-decoration: none;
+		transition: color 0.2s ease;
+	}
+
+	.social a:hover {
+		color: rgb(136, 58, 234);
+	}
+
+	@media (max-width: 768px) {
+		.hero {
+			min-height: auto;
+			padding: 2rem;
+		}
+
+		.hero .container {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+
+		.hero-visual {
+			height: 250px;
+		}
+
+		.glow-orb {
+			width: 200px;
+			height: 200px;
+		}
+
+		.cta-buttons {
+			flex-direction: column;
+		}
+
+		.btn {
+			width: 100%;
+		}
+
+		.highlights {
+			padding: 2rem 1rem;
+		}
+
+		.cta-section {
+			padding: 2rem 1rem;
+		}
+
+		footer .container {
+			flex-direction: column;
+		}
+	}
+</style>
