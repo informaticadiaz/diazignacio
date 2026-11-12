@@ -1,10 +1,18 @@
-# Cloudflare Pages deployment
+# Historical: Cloudflare Pages deployment
 
-This repository is a static website. The Pages build deliberately publishes only
+> **Retired deployment perspective.** This document is preserved as historical
+> evidence after a Pages/domain configuration incident affected unrelated
+> hostnames, including `supabase.diazignacio.ar`. Do not use these instructions
+> to deploy this workspace. The active planning authority is
+> `odd/tasks/local-service-deployment.md`, which defines a separately owned local
+> service inside the server. No Pages, DNS, tunnel, systemd, or Cloudflare
+> mutation is authorized by that ODD.
+
+This repository previously described a static website deployment through Cloudflare Pages. The Pages build deliberately published only
 the public website files, not workspace documentation, runtime data, or the
 separate `nodo/` design handoff.
 
-## Dashboard configuration
+## Historical dashboard configuration (do not apply)
 
 Create a Cloudflare Pages project from `informaticadiaz/diazignacio` with:
 
@@ -17,7 +25,7 @@ The build has no package installation or external dependencies. It copies only
 `index.html`, `blog.html`, `assets/`, `css/`, `js/`, the Pages headers, and the
 404 document to the deployment output.
 
-## Safe cutover
+## Historical safe-cutover notes (superseded; do not apply)
 
 1. Confirm the generated `*.pages.dev` preview displays the homepage and
    `/blog.html`.
